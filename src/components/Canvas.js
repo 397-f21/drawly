@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Button from 'react-bootstrap/Button'
-import { ReactSVG } from 'react-svg'
+import { writeData } from '../utilities/firebase';
 
 const Canvas = class extends React.Component {
     constructor(props) {
@@ -17,6 +17,7 @@ const Canvas = class extends React.Component {
             .then(data => {
                 // console.log(data);
                 localStorage.setItem('image', data);
+                writeData(data);
             })
             .catch(e => {
                 console.log(e);
