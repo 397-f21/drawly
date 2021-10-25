@@ -17,7 +17,7 @@ const Canvas = () => {
             .then(data => {
                 // console.log(data);
                 // localStorage.setItem('image', data);
-                writeData(data, 'dummy_user/dummy_date2');
+                writeData(data, 'dummy_user/dummy_date4');
             })
             .catch(e => {
                 console.log(e);
