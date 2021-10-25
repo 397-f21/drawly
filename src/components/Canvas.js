@@ -3,24 +3,21 @@ import { useState } from 'react';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
+import { useData } from '../utilities/firebase.js';
+
 
 const Canvas = () => {
-    // constructor(props) {
-    //     super(props);
-    //     this.saveImage = this.saveImage.bind(this);
-    //     this.canvas = React.createRef();
-    //     this.state = {image: null};
-    // }
     const canvas = React.createRef();
     const [image, setImage] = useState(null);
+    const [dbImage, loading, error] = useData('dummy_user');
 
     const saveImage = () => {
         canvas.current
             .exportSvg()
             .then(data => {
                 // console.log(data);
-                localStorage.setItem('image', data);
-                writeData(data, "dummy_user/dummy_date");
+                // localStorage.setItem('image', data);
+                writeData(data, 'dummy_user/dummy_date2');
             })
             .catch(e => {
                 console.log(e);
@@ -28,11 +25,12 @@ const Canvas = () => {
     }
 
     const loadImage = () => {
-        const image = localStorage.getItem('image');
+        // const image = localStorage.getItem('image');
         // var parser = new DOMParser();
         // var parsedImage = parser.parseFromString(image, "image/svg+xml");
-        console.log(image);
-        setImage(image);
+        
+        // console.log(image);
+        setImage(dbImage.dummy_date2);
     }
 
     return (
