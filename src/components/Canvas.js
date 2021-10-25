@@ -17,7 +17,7 @@ const Canvas = () => {
             .then(data => {
                 // console.log(data);
                 // localStorage.setItem('image', data);
-                writeData(data, 'dummy_user/dummy_date4');
+                writeData(data, 'dummy_user/dummy_date7');
             })
             .catch(e => {
                 console.log(e);
@@ -40,6 +40,8 @@ const Canvas = () => {
                     ref={canvas}
                     strokeWidth={5}
                     strokeColor="black"
+                    height = {300} // make dynamic
+                    width = {300} // make dynamic
                 />
                 <Button onClick={saveImage}>
                     Save Image
