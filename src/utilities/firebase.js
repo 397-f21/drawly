@@ -11,8 +11,8 @@ const firebaseConfig = {
     appId: "1:906442890039:web:b7692d5d29f1c158fb58b2"
 };
 
-export const writeData = (data) => {
-    set(ref(database), data);
+export const writeData = (data, path) => {
+    set(ref(database, path), data);
 };
 
 const app = initializeApp(firebaseConfig);

@@ -17,7 +17,7 @@ const Canvas = class extends React.Component {
             .then(data => {
                 // console.log(data);
                 localStorage.setItem('image', data);
-                writeData(data);
+                writeData(data, "dummy_path");
             })
             .catch(e => {
                 console.log(e);
