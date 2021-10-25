@@ -1,56 +1,56 @@
 import * as React from "react";
+import { useState } from 'react';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
 
-const Canvas = class extends React.Component {
-    constructor(props) {
-        super(props);
-        this.saveImage = this.saveImage.bind(this);
-        this.canvas = React.createRef();
-        this.state = {image: null};
-    }
+const Canvas = () => {
+    // constructor(props) {
+    //     super(props);
+    //     this.saveImage = this.saveImage.bind(this);
+    //     this.canvas = React.createRef();
+    //     this.state = {image: null};
+    // }
+    const canvas = React.createRef();
+    const [image, setImage] = useState(null);
 
-    saveImage = () => {
-        this.canvas.current
+    const saveImage = () => {
+        canvas.current
             .exportSvg()
             .then(data => {
                 // console.log(data);
                 localStorage.setItem('image', data);
-                writeData(data, "dummy_path");
+                writeData(data, "dummy_user/dummy_date");
             })
             .catch(e => {
                 console.log(e);
             });
     }
 
-    loadImage = () => {
+    const loadImage = () => {
         const image = localStorage.getItem('image');
         // var parser = new DOMParser();
         // var parsedImage = parser.parseFromString(image, "image/svg+xml");
         console.log(image);
-        this.setState({image: image});
+        setImage(image);
     }
 
-    render() {
-        return (
+    return (
             <div>
-                <img src={`data:image/svg+xml;utf8,${encodeURIComponent(this.state.image)}`} />
-                <h2>{this.props.title}</h2>
+                <img src={`data:image/svg+xml;utf8,${encodeURIComponent(image)}`} />
                 <ReactSketchCanvas
-                    ref={this.canvas}
+                    ref={canvas}
                     strokeWidth={5}
                     strokeColor="black"
                 />
-                <Button onClick={this.saveImage}>
+                <Button onClick={saveImage}>
                     Save Image
                 </Button>
-                <Button onClick={this.loadImage}>
+                <Button onClick={loadImage}>
                     Load Image
                 </Button>
             </div>
-        );
-    }
+    );
 };
 
 export default Canvas;
