@@ -5,11 +5,21 @@ import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
 import { useData } from '../utilities/firebase.js';
 
+const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 const Canvas = () => {
     const canvas = React.createRef();
     const [image, setImage] = useState(null);
     const [dbImage, loading, error] = useData('dummy_user');
+
+    const getDate = () => {
+        let today = new Date();
+        let month = MONTH_MAP[today.getMonth()];
+        let day = DAY_MAP[today.getDay()];
+        let date = today.getDate()
+        return day + ', ' + month + ' ' + date;
+    }
 
     const saveImage = () => {
         canvas.current
@@ -34,8 +44,12 @@ const Canvas = () => {
     }
 
     return (
-            <div>
-                <img src={`data:image/svg+xml;utf8,${encodeURIComponent(image)}`} />
+            <div className='canvas-layout'>
+                <div className='date-wrapper'>
+                    <h1 className='date-styling'>{getDate()}</h1>
+                    <h2 className='prompt-styling'>How are you feeling today?</h2>
+                </div>
+                {/* <img src={`data:image/svg+xml;utf8,${encodeURIComponent(image)}`} /> */}
                 <ReactSketchCanvas
                     ref={canvas}
                     strokeWidth={5}
@@ -43,12 +57,12 @@ const Canvas = () => {
                     height = {300} // make dynamic
                     width = {300} // make dynamic
                 />
-                <Button onClick={saveImage}>
-                    Save Image
+                <Button className='button-styling' onClick={saveImage}>
+                    Check in
                 </Button>
-                <Button onClick={loadImage}>
+                {/* <Button onClick={loadImage}>
                     Load Image
-                </Button>
+                </Button> */}
             </div>
     );
 };
