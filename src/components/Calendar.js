@@ -13,11 +13,11 @@ const Calendar = ({user}) => {
         <Image src={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} roundedCircle style={{background: 'black', height: 50}}/>
     );
 
-return (
-    <div style = {{overflow: 'scroll'}}>
-        <h1>Mood Log</h1>
-        {loading? <p>Images Loading</p>:formattedImages()}
-    </div>
-)
+    return (
+        <div style = {{overflow: 'scroll'}}>
+            <h1>Mood Log</h1>
+            {loading? <p>Images Loading</p>:formattedImages()}
+        </div>
+    )
 }
 export default Calendar;
