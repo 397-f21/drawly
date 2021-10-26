@@ -1,8 +1,4 @@
-import {useState} from 'react'
-
 const Tab = ({mode, swapMode}) => {
-    // const [mode, setMode] = useState('draw')
-
     return(
         <div className='tab'>
             <div onClick={() => swapMode()} className={mode === 'draw' ? 'tab-activated' : 'tab-deactivated'}>
