@@ -9,14 +9,14 @@ const Calendar = () => {
     const [user] = useUserState();
     const [images, loading, error] = useData(user ? user.uid : "dummy_user");
 
-    const formattedImages = () => Object.keys(images).map(key => 
+    const formattedImages = () => Object.keys(images ?? {}).map(key => 
         <Image key={key} src={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} roundedCircle style={{background: 'black', height: 50}}/>
     );
 
     return (
         <div style = {{overflow: 'scroll'}}>
             <h1>Mood Log</h1>
-            {loading? <p>Images Loading</p>:formattedImages()}
+            {loading ? <p>Images Loading</p>:formattedImages()}
         </div>
     )
 }

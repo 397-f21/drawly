@@ -50,7 +50,6 @@ const Canvas = ({ title }) => {
                 <h1 className='date-styling'>{getDate()}</h1>
                 <h2 className='prompt-styling'>How are you feeling today?</h2>
             </div>
-            {/* <img src={`data:image/svg+xml;utf8,${encodeURIComponent(image)}`} /> */}
             <ReactSketchCanvas
                 ref={canvas}
                 strokeWidth={5}
@@ -58,9 +57,9 @@ const Canvas = ({ title }) => {
                 height={300} // make dynamic
                 width={300} // make dynamic
             />
-            <Button className='button-styling' onClick={saveImage}>
+            {user ? <Button className='button-styling' onClick={saveImage}>
                 Check in
-            </Button>
+            </Button> : null}
             {user ? <SignOutButton /> : <SignInButton />}
         </div>
     );
