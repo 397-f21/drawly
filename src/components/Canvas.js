@@ -3,53 +3,55 @@ import { useState } from 'react';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
-import { useData } from '../utilities/firebase.js';
+import { useData, signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 
+const SignInButton = () => (
+    <Button
+        onClick={() => signInWithGoogle()}>
+        Sign In
+    </Button>
+);
 
-const Canvas = () => {
+const SignOutButton = () => (
+    <Button
+        onClick={() => signOut()}>
+        Sign Out
+    </Button>
+);
+
+const Canvas = ({ title }) => {
     const canvas = React.createRef();
-    const [image, setImage] = useState(null);
-    const [dbImage, loading, error] = useData('dummy_user');
+    const [user] = useUserState();
 
     const saveImage = () => {
         canvas.current
             .exportSvg()
             .then(data => {
-                // console.log(data);
-                // localStorage.setItem('image', data);
-                writeData(data, 'dummy_user/dummy_date7');
+                writeData(data, `${user.uid}/dummy_date7`);
             })
             .catch(e => {
                 console.log(e);
             });
     }
 
-    const loadImage = () => {
-        // const image = localStorage.getItem('image');
-        // var parser = new DOMParser();
-        // var parsedImage = parser.parseFromString(image, "image/svg+xml");
-        
-        // console.log(image);
-        setImage(dbImage.dummy_date2);
-    }
-
     return (
+        <div>
             <div>
-                <img src={`data:image/svg+xml;utf8,${encodeURIComponent(image)}`} />
                 <ReactSketchCanvas
                     ref={canvas}
                     strokeWidth={5}
                     strokeColor="black"
-                    height = {300} // make dynamic
-                    width = {300} // make dynamic
+                    height={300} // make dynamic
+                    width={300} // make dynamic
                 />
-                <Button onClick={saveImage}>
-                    Save Image
-                </Button>
-                <Button onClick={loadImage}>
-                    Load Image
-                </Button>
+                {user ?
+                    <Button onClick={saveImage}>
+                        Save Image
+                    </Button> :
+                    null}
+                {user ? <SignOutButton /> : <SignInButton />}
             </div>
+        </div>
     );
 };
 
