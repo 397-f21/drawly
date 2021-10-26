@@ -11,6 +11,8 @@ const SignInButton = () => (
         Sign In
     </Button>
 );
+const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 const SignOutButton = () => (
     <Button
@@ -22,6 +24,14 @@ const SignOutButton = () => (
 const Canvas = ({ title }) => {
     const canvas = React.createRef();
     const [user] = useUserState();
+
+    const getDate = () => {
+        let today = new Date();
+        let month = MONTH_MAP[today.getMonth()];
+        let day = DAY_MAP[today.getDay()];
+        let date = today.getDate()
+        return day + ', ' + month + ' ' + date;
+    }
 
     const saveImage = () => {
         canvas.current
@@ -35,22 +45,23 @@ const Canvas = ({ title }) => {
     }
 
     return (
-        <div>
-            <div>
-                <ReactSketchCanvas
-                    ref={canvas}
-                    strokeWidth={5}
-                    strokeColor="black"
-                    height={300} // make dynamic
-                    width={300} // make dynamic
-                />
-                {user ?
-                    <Button onClick={saveImage}>
-                        Save Image
-                    </Button> :
-                    null}
-                {user ? <SignOutButton /> : <SignInButton />}
+        <div className='canvas-layout'>
+            <div className='date-wrapper'>
+                <h1 className='date-styling'>{getDate()}</h1>
+                <h2 className='prompt-styling'>How are you feeling today?</h2>
             </div>
+            {/* <img src={`data:image/svg+xml;utf8,${encodeURIComponent(image)}`} /> */}
+            <ReactSketchCanvas
+                ref={canvas}
+                strokeWidth={5}
+                strokeColor="black"
+                height={300} // make dynamic
+                width={300} // make dynamic
+            />
+            <Button className='button-styling' onClick={saveImage}>
+                Check in
+            </Button>
+            {user ? <SignOutButton /> : <SignInButton />}
         </div>
     );
 };
