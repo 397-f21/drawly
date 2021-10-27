@@ -26,18 +26,27 @@ const Canvas = ({ title }) => {
     const [user] = useUserState();
 
     const getDate = () => {
-        let today = new Date();
-        let month = MONTH_MAP[today.getMonth()];
-        let day = DAY_MAP[today.getDay()];
-        let date = today.getDate()
+        const today = new Date();
+        const month = MONTH_MAP[today.getMonth()];
+        const day = DAY_MAP[today.getDay()];
+        const date = today.getDate();
         return day + ', ' + month + ' ' + date;
+    }
+
+    const getDatePath = () => {
+        const today = new Date();
+        const month = MONTH_MAP[today.getMonth()];
+        const day = DAY_MAP[today.getDay()];
+        const date = today.getDate();
+        const year = today.getFullYear();
+        return [day, month, date, year].join('_')
     }
 
     const saveImage = () => {
         canvas.current
             .exportSvg()
             .then(data => {
-                writeData(data, `${user.uid}/dummy_date7`);
+                writeData(data, `${user.uid}/${getDatePath()}`);
             })
             .catch(e => {
                 console.log(e);
@@ -50,13 +59,15 @@ const Canvas = ({ title }) => {
                 <h1 className='date-styling'>{getDate()}</h1>
                 <h2 className='prompt-styling'>How are you feeling today?</h2>
             </div>
-            <ReactSketchCanvas
-                ref={canvas}
-                strokeWidth={5}
-                strokeColor="black"
-                height={300} // make dynamic
-                width={300} // make dynamic
-            />
+            <div>
+                <ReactSketchCanvas
+                    ref={canvas}
+                    strokeWidth={5}
+                    strokeColor="black"
+                    height={300} // make dynamic
+                    width={300} // make dynamic
+                />
+            </div>
             {user ? <Button className='button-styling' onClick={saveImage}>
                 Check in
             </Button> : null}

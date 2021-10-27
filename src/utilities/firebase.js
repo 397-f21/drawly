@@ -46,7 +46,11 @@ export const writeData = (data, path) => {
 };
 
 export const signInWithGoogle = () => {
-  signInWithPopup(getAuth(firebase), new GoogleAuthProvider());
+  signInWithPopup(getAuth(firebase), new GoogleAuthProvider())
+  .catch((error) => {
+    console.log(error.message);
+  });
+
 };
 
 const firebaseSignOut = () => signOut(getAuth(firebase));
