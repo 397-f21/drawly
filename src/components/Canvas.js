@@ -22,6 +22,12 @@ const SignOutButton = () => (
     </Button>
 );
 
+const ClearButton = React.forwardRef((props, ref) => (
+    <Button onClick={() => ref.current.clearCanvas()} className='button-styling'>
+        Clear Canvas
+    </Button>
+));
+
 const Canvas = ({ title }) => {
     const canvas = React.createRef();
     const [user] = useUserState();
@@ -76,6 +82,7 @@ const Canvas = ({ title }) => {
             {user ? <Button className='button-styling' onClick={saveImage}>
                 Check in
             </Button> : null}
+            <ClearButton ref={canvas}/>
             {user ? <SignOutButton /> : <SignInButton />}
         </div>
     );
