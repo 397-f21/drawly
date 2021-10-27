@@ -10,16 +10,20 @@ const Calendar = () => {
     const [images, loading, error] = useData(user ? user.uid : "no_user");
 
     const formattedImages = () => Object.keys(images ?? {}).map(key =>
-        <div>
-            <p>{key}</p>
-            <Image key={key} src={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} roundedCircle style={{ background: 'black', height: 50 }} />
-        </div>
+        // <div>
+            // <p>{key}</p>
+            <Image key={key} src={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} roundedCircle className='calendar-entry' style={{gridArea: 'a34'}} />
+        // </div>
     );
 
     return (
-        <div style={{ overflow: 'scroll' }}>
-            <h1>Mood Log</h1>
-            {loading ? <p>Images Loading</p> : formattedImages()}
+            //         {/* <h1>Mood Log</h1> */}
+            // {/* {loading ? <p>Images Loading</p> : formattedImages()} */}
+        <div className='calendar-layout'>
+            <div className='calendar-grid'>
+                {/* <div style={{gridArea: 'a00' , background: '#FFFFFF', height: '100%', width: '100%'}}></div> */}
+                {loading ? <p>Images Loading</p> : formattedImages()}
+            </div>
         </div>
     )
 }
