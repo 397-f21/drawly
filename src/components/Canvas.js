@@ -1,12 +1,11 @@
 import * as React from "react";
-import { useState } from 'react';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
-import { useData, signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
+import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 
 const SignInButton = () => (
-    <Button
+    <Button className='button-styling'
         onClick={() => signInWithGoogle()}>
         Sign In
     </Button>
@@ -15,13 +14,13 @@ const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday
 const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 const SignOutButton = () => (
-    <Button
+    <Button className='button-styling'
         onClick={() => signOut()}>
         Sign Out
     </Button>
 );
 
-const Canvas = ({ title }) => {
+const Canvas = () => {
     const canvas = React.createRef();
     const [user] = useUserState();
 
