@@ -4,6 +4,7 @@ import { ReactSketchCanvas } from "react-sketch-canvas";
 import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
 import { useData, signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
+import { useSnackbar } from 'notistack';
 
 const SignInButton = () => (
     <Button
@@ -24,6 +25,7 @@ const SignOutButton = () => (
 const Canvas = ({ title }) => {
     const canvas = React.createRef();
     const [user] = useUserState();
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
     const getDate = () => {
         const today = new Date();
@@ -47,9 +49,12 @@ const Canvas = ({ title }) => {
             .exportSvg()
             .then(data => {
                 writeData(data, `${user.uid}/${getDatePath()}`);
+                canvas.current.clearCanvas();
+                enqueueSnackbar('Image successfully saved.', {variant: 'success', autoHideDuration: 1500,});
             })
             .catch(e => {
                 console.log(e);
+                enqueueSnackbar('Error saving image.', {variant: 'error'});
             });
     }
 
