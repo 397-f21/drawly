@@ -7,7 +7,13 @@ import { SnackbarProvider } from 'notistack';
 
 ReactDOM.render(
   <React.StrictMode>
-    <SnackbarProvider maxSnack={1}>
+    <SnackbarProvider 
+      maxSnack={1}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'center',
+      }}
+    >
       <App />
     </SnackbarProvider>
   </React.StrictMode>,

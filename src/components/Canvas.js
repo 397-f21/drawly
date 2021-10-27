@@ -50,7 +50,7 @@ const Canvas = ({ title }) => {
             .then(data => {
                 writeData(data, `${user.uid}/${getDatePath()}`);
                 canvas.current.clearCanvas();
-                enqueueSnackbar('Image successfully saved.', {variant: 'success', autoHideDuration: 1500,});
+                enqueueSnackbar('Image successfully saved.', {variant: 'success', autoHideDuration: 850,});
             })
             .catch(e => {
                 console.log(e);
