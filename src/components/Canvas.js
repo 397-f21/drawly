@@ -5,7 +5,10 @@ import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
 import { useData, signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 import { useSnackbar } from 'notistack';
+import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import { ref } from "@firebase/database";
 
+const state = [true, false];
 const SignInButton = () => (
     <Button
         onClick={() => signInWithGoogle()} className='signin-button-styling'>
@@ -22,11 +25,25 @@ const SignOutButton = () => (
     </Button>
 );
 
+const EraseToggle = React.forwardRef((props, ref) => (
+    <BootstrapSwitchButton
+    width={100}
+    onstyle="light" 
+    offstyle="warning"
+    checked={false}
+    onlabel='Erase'
+    offlabel='Draw'
+    onChange={(checked) => {
+        ref.current.eraseMode(checked)
+    }} className='button-styling'/>
+));
+
 const ClearButton = React.forwardRef((props, ref) => (
     <Button onClick={() => ref.current.clearCanvas()} className='button-styling'>
         Clear Canvas
     </Button>
 ));
+
 
 const Canvas = ({ title }) => {
     const canvas = React.createRef();
@@ -85,8 +102,9 @@ const Canvas = ({ title }) => {
             {user ? <Button className='button-styling' onClick={saveImage}>
                 Check in
             </Button> : null}
+            <EraseToggle ref = {canvas}/>
             <ClearButton ref={canvas}/>
-            {user ? <SignOutButton/> : <SignInButton/>}
+            {user ? <SignOutButton/> : <SignInButton className = 'signin-button-styling'/>}
         </div>
     );
 };
