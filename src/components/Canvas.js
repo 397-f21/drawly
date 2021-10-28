@@ -35,7 +35,7 @@ const EraseToggle = React.forwardRef((props, ref) => (
     offlabel='Draw'
     onChange={(checked) => {
         ref.current.eraseMode(checked)
-    }} className='button-styling'/>
+    }} />
 ));
 
 const ClearButton = React.forwardRef((props, ref) => (
@@ -43,6 +43,13 @@ const ClearButton = React.forwardRef((props, ref) => (
         Clear Canvas
     </Button>
 ));
+
+const UnDo = React.forwardRef((props, ref) => (
+    <Button onClick={() => ref.current.undo()} className='undo-button-styling'>
+        undo
+    </Button>
+));
+
 
 
 const Canvas = ({ title }) => {
@@ -102,6 +109,7 @@ const Canvas = ({ title }) => {
             {user ? <Button className='button-styling' onClick={saveImage}>
                 Check in
             </Button> : null}
+            <UnDo ref = {canvas}/>
             <EraseToggle ref = {canvas}/>
             <ClearButton ref={canvas}/>
             {user ? <SignOutButton/> : <SignInButton className = 'signin-button-styling'/>}
