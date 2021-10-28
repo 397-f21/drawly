@@ -1,18 +1,14 @@
 import * as React from "react";
+import { useState } from 'react';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
+import { useData, signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 import { useSnackbar } from 'notistack';
-import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 
 const SignInButton = () => (
-<<<<<<< HEAD
     <Button
         onClick={() => signInWithGoogle()} className='signin-button-styling'>
-=======
-    <Button className='button-styling'
-        onClick={() => signInWithGoogle()}>
->>>>>>> 631dbf33a8dc58df4dc0b3837e99b05f011e6de2
         Sign In
     </Button>
 );
@@ -20,13 +16,8 @@ const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday
 const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 const SignOutButton = () => (
-<<<<<<< HEAD
     <Button
         onClick={() => signOut()} className='signin-button-styling'>
-=======
-    <Button className='button-styling'
-        onClick={() => signOut()}>
->>>>>>> 631dbf33a8dc58df4dc0b3837e99b05f011e6de2
         Sign Out
     </Button>
 );
@@ -37,7 +28,7 @@ const ClearButton = React.forwardRef((props, ref) => (
     </Button>
 ));
 
-const Canvas = () => {
+const Canvas = ({ title }) => {
     const canvas = React.createRef();
     const [user] = useUserState();
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
