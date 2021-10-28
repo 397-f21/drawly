@@ -54,7 +54,7 @@ const Canvas = ({ title }) => {
     }
 
     return (
-        <div className='canvas-layout'>
+        <div data-testid='canvas' className='canvas-layout'>
             <div className='date-wrapper'>
                 <h1 className='date-styling'>{getDate()}</h1>
                 <h2 className='prompt-styling'>How are you feeling today?</h2>
