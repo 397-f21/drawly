@@ -8,7 +8,7 @@ import { useSnackbar } from 'notistack';
 
 const SignInButton = () => (
     <Button
-        onClick={() => signInWithGoogle()}>
+        onClick={() => signInWithGoogle()} className='signin-button-styling'>
         Sign In
     </Button>
 );
@@ -17,7 +17,7 @@ const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
 
 const SignOutButton = () => (
     <Button
-        onClick={() => signOut()}>
+        onClick={() => signOut()} className='signin-button-styling'>
         Sign Out
     </Button>
 );
@@ -56,7 +56,10 @@ const Canvas = ({ title }) => {
             .then(data => {
                 writeData(data, `${user.uid}/${getDatePath()}`);
                 canvas.current.clearCanvas();
-                enqueueSnackbar('Image successfully saved.', {variant: 'success', autoHideDuration: 850,});
+                enqueueSnackbar('Image successfully saved.', {anchorOrigin: {
+                    vertical: 'bottom',
+                    horizontal: 'center',
+                },variant: 'success', autoHideDuration: 850,});
             })
             .catch(e => {
                 console.log(e);
@@ -83,7 +86,7 @@ const Canvas = ({ title }) => {
                 Check in
             </Button> : null}
             <ClearButton ref={canvas}/>
-            {user ? <SignOutButton /> : <SignInButton />}
+            {user ? <SignOutButton/> : <SignInButton/>}
         </div>
     );
 };

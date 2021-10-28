@@ -86,3 +86,13 @@
     font-weight: 800;
     font-size: 16px;
 }
+
+.signin-button-styling{
+    background-color: #e9d1ba;
+    width: 100px;
+    height: 40px;
+    border: none;
+    /* border-radius: 20px; */
+    font-weight: 500;
+    font-size: 14px;
+}
