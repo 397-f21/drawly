@@ -5,10 +5,9 @@ import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
 import { useData, signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 import { useSnackbar } from 'notistack';
-import BootstrapSwitchButton from 'bootstrap-switch-button-react'
+import ToggleButton from 'react-bootstrap/ToggleButton'
 import { ref } from "@firebase/database";
 
-const state = [true, false];
 const SignInButton = () => (
     <Button
         onClick={() => signInWithGoogle()} className='signin-button-styling'>
@@ -25,18 +24,44 @@ const SignOutButton = () => (
     </Button>
 );
 
-const EraseToggle = React.forwardRef((props, ref) => (
-    <BootstrapSwitchButton
-    width={100}
-    onstyle="light" 
-    offstyle="warning"
-    checked={false}
-    onlabel='Erase'
-    offlabel='Draw'
-    onChange={(checked) => {
-        ref.current.eraseMode(checked)
-    }} />
-));
+
+
+
+const EraseCheckedButton = React.forwardRef((props, ref) => {
+
+    const [checked, setChecked] = useState(true);
+    return(
+    <ToggleButton
+    className="mb-2"
+    id="toggle-check"
+    type="checkbox"
+    variant="outline-primary"
+    checked={checked}
+    value="0"
+    onChange={(e) => {setChecked(e.currentTarget.checked); ref.current.eraseMode(checked)}}
+  >
+    Eraser
+  </ToggleButton>
+    )
+
+})
+
+
+// const EraseButton = forwardRef((props, ref) => (
+//     <ToggleButton
+//     className="mb-2"
+//     id="toggle-check"
+//     type="checkbox"
+//     variant="outline-primary"
+//     checked={false}
+//     value="1"
+//     onChange={(checked) => ref.current.eraseMode(checked)}
+//   >
+//     Erase Mode
+//   </ToggleButton>
+
+// ));
+
 
 const ClearButton = React.forwardRef((props, ref) => (
     <Button onClick={() => ref.current.clearCanvas()} className='button-styling'>
@@ -90,7 +115,6 @@ const Canvas = ({ title }) => {
                 enqueueSnackbar('Error saving image.', {variant: 'error'});
             });
     }
-
     return (
         <div className='canvas-layout'>
             <div className='date-wrapper'>
@@ -110,7 +134,7 @@ const Canvas = ({ title }) => {
                 Check in
             </Button> : null}
             <UnDo ref = {canvas}/>
-            <EraseToggle ref = {canvas}/>
+            <EraseCheckedButton ref = {canvas}/>
             <ClearButton ref={canvas}/>
             {user ? <SignOutButton/> : <SignInButton className = 'signin-button-styling'/>}
         </div>
