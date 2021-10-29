@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
-import { useData, signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
+import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 import { useSnackbar } from 'notistack';
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { ref } from "@firebase/database";
@@ -23,9 +23,6 @@ const SignOutButton = () => (
         Sign Out
     </Button>
 );
-
-
-
 
 const EraseCheckedButton = React.forwardRef((props, ref) => {
 
@@ -64,7 +61,8 @@ const EraseCheckedButton = React.forwardRef((props, ref) => {
 
 
 const ClearButton = React.forwardRef((props, ref) => (
-    <Button onClick={() => ref.current.clearCanvas()} className='button-styling'>
+    <Button
+    data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className='button-styling'>
         Clear Canvas
     </Button>
 ));
@@ -75,10 +73,8 @@ const UnDo = React.forwardRef((props, ref) => (
     </Button>
 ));
 
-
-
-const Canvas = ({ title }) => {
-    const canvas = React.createRef();
+const Canvas = React.forwardRef((props, ref) => {
+    const canvas = ref ?? React.createRef();
     const [user] = useUserState();
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
@@ -139,6 +135,6 @@ const Canvas = ({ title }) => {
             {user ? <SignOutButton/> : <SignInButton className = 'signin-button-styling'/>}
         </div>
     );
-};
+});
 
 export default Canvas;
