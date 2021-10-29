@@ -7,8 +7,8 @@ const Calendar = () => {
     const [images, loading, error] = useData(user ? user.uid : "no_user");
 
     const formattedImages = () => Object.keys(images ?? {}).map(key =>
-        <div style={{margin: '10px'}}>
-            <Image key={key} src={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} roundedCircle style={{ background: 'black', height: 50 }} />
+        <div key={key} style={{margin: '10px'}}>
+            <Image src={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} roundedCircle style={{ background: 'black', height: 50 }} />
             <span> {key.replace('_', ', ').replace('_', ' ').replace('_', ', ')}</span><br></br>
         </div>
     );
