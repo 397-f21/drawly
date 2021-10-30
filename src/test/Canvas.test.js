@@ -47,3 +47,11 @@ describe("Clear canvas button", () => {
         expect(ref.current.state.currentPaths.length).toBe(0);
     });
 });
+
+describe("Check in button", () => {
+    it("Renders Check in button only when user is logged in", () => {
+        const { getByTestId } = render(<Canvas />);
+        const user = getByTestId("user");
+        expect(user).toBeTruthy;
+    });
+});
