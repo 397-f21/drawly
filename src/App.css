@@ -96,6 +96,78 @@
     font-weight: 500;
     font-size: 14px;
 }
-
-
-
+.calendar-layout{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.calendar-grid{
+    aspect-ratio: 1/1;
+    width: 90%;
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: 14.28% 14.28% 14.28% 14.28% 14.28% 14.28% 14.28%;
+    grid-template-rows: 14.28% 14.28% 14.28% 14.28% 14.28% 14.28% 14.28%;
+    grid-template-areas:
+        "dd0 dd1 dd2 dd3 dd4 dd5 dd6"
+        "a00 a10 a20 a30 a40 a50 a60"
+        "a01 a11 a21 a31 a41 a51 a61"
+        "a02 a12 a22 a32 a42 a52 a62"
+        "a03 a13 a23 a33 a43 a53 a63"
+        "a04 a14 a24 a34 a44 a54 a64"
+        "a05 a15 a25 a35 a45 a55 a65";
+    /* display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center; */
+}
+.calendar-entry{
+    height: 90%;
+    align-self: center;
+    justify-self: center;
+    border: 1px solid #FDB573;
+}
+.calendar-entry-empty{
+    height: 90%;
+    align-self: center;
+    justify-self: center;
+    border: 1px solid #FDB573;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+}
+/* .days-of-week{
+    width: 90%;
+    max-width: 500px;
+    display: flex;
+    justify-content: space-around;
+} */
+.calendar-grid h1{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    color: #595959;
+    margin: 0;
+    align-self: center;
+    justify-self: center;
+    /* margin-bottom: 30px; */
+}
+.calendar-layout h2{
+    margin-bottom: 30px;
+    /* aspect-ratio: 1/1; */
+    width: 90%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    color: #FDB573;
+    text-align: left;
+    align-self: center;
+    justify-self: center;
+    max-width: 500px;
+    /* width: 84%;
+    /* text-align: left; */ 
+}

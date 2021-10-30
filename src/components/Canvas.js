@@ -87,12 +87,7 @@ const Canvas = React.forwardRef((props, ref) => {
     }
 
     const getDatePath = () => {
-        const today = new Date();
-        const month = MONTH_MAP[today.getMonth()];
-        const day = DAY_MAP[today.getDay()];
-        const date = today.getDate();
-        const year = today.getFullYear();
-        return [day, month, date, year].join('_')
+        return Date();
     }
 
     const saveImage = () => {
