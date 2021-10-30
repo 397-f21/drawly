@@ -64,13 +64,20 @@ const Calendar = () => {
             //         {/* <h1>Mood Log</h1> */}
             // {/* {loading ? <p>Images Loading</p> : formattedImages()} */}
         <div className='calendar-layout'>
-            <div className='days-of-week'>
+            {/* <div className='days-of-week'>
                 <h1>SU</h1><h1>MO</h1><h1>TU</h1><h1>WE</h1><h1>TH</h1><h1>FR</h1><h1>SA</h1>
-            </div>
-            {/* <h2>{MONTH_MAP[today.getMonth()]}</h2> */}
+            </div> */}
+            <h2>{MONTH_MAP[today.getMonth()] + ' ' + today.getFullYear()}</h2>
             <div className='calendar-grid'>
                 {/* <div style={{gridArea: 'a00' , background: '#FFFFFF', height: '100%', width: '100%'}}></div> */}
                 {/* <h2 style={{gridArea: 'mmm'}}> {MONTH_MAP[today.getMonth()] + ' ' + today.getFullYear()} </h2> */}
+                <h1 style={{gridArea: 'dd0'}}>SU</h1>
+                <h1 style={{gridArea: 'dd1'}}>MO</h1>
+                <h1 style={{gridArea: 'dd2'}}>TU</h1>
+                <h1 style={{gridArea: 'dd3'}}>WE</h1>
+                <h1 style={{gridArea: 'dd4'}}>TH</h1>
+                <h1 style={{gridArea: 'dd5'}}>FR</h1>
+                <h1 style={{gridArea: 'dd6'}}>SA</h1>
                 {generateCalendar()}
                 {loading ? <p>Images Loading</p> : formattedImages()}
             </div>
