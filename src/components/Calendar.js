@@ -50,9 +50,8 @@ const Calendar = () => {
         const mapRange = generateCalendarRange();
         return (Object.keys(images ?? {}).map(key =>{
             const imageDateIndex = new Date(key).getDate() - 1;
-            return(
-                <Image key={key} src={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} roundedCircle className='calendar-entry' style={{gridArea: mapRange[imageDateIndex]}} />
-            )
+            const imageDateMonth = new Date(key).getMonth();
+            return (imageDateMonth=== today.getMonth()) ? <Image key={key} src={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} roundedCircle className='calendar-entry' style={{gridArea: mapRange[imageDateIndex]}} /> : null;
         }
         ));
     }
