@@ -23,6 +23,10 @@ const getCalendarLayoutStyling = (today) => {
     return isMorning(today) ? 'morning-calendar-layout' : isAfternoon(today) ? 'afternoon-calendar-layout' : 'evening-calendar-layout';
 }
 
+const getDayOfWeekColor = (today) => {
+    return isMorning(today) ? '#595959' : isAfternoon(today) ? '#595959' : '#FFFFFF';
+}
+
 const Calendar = () => {
     const [user] = useUserState();
     const [images, loading, error] = useData(user ? user.uid : "no_user");
@@ -66,13 +70,13 @@ const Calendar = () => {
         <div className={getCalendarLayoutStyling(today)}>
             <h2>{MONTH_MAP[today.getMonth()] + ' ' + today.getFullYear()}</h2>
             <div className='calendar-grid'>
-                <h1 style={{ gridArea: 'dd0' }}>SU</h1>
-                <h1 style={{ gridArea: 'dd1' }}>MO</h1>
-                <h1 style={{ gridArea: 'dd2' }}>TU</h1>
-                <h1 style={{ gridArea: 'dd3' }}>WE</h1>
-                <h1 style={{ gridArea: 'dd4' }}>TH</h1>
-                <h1 style={{ gridArea: 'dd5' }}>FR</h1>
-                <h1 style={{ gridArea: 'dd6' }}>SA</h1>
+                <h1 style={{ gridArea: 'dd0', color: getDayOfWeekColor(today)}}>SU</h1>
+                <h1 style={{ gridArea: 'dd1', color: getDayOfWeekColor(today)}}>MO</h1>
+                <h1 style={{ gridArea: 'dd2', color: getDayOfWeekColor(today)}}>TU</h1>
+                <h1 style={{ gridArea: 'dd3', color: getDayOfWeekColor(today)}}>WE</h1>
+                <h1 style={{ gridArea: 'dd4', color: getDayOfWeekColor(today)}}>TH</h1>
+                <h1 style={{ gridArea: 'dd5', color: getDayOfWeekColor(today)}}>FR</h1>
+                <h1 style={{ gridArea: 'dd6', color: getDayOfWeekColor(today)}}>SA</h1>
                 {generateCalendar()}
                 {loading ? <p>Images Loading</p> : formattedImages()}
             </div>
