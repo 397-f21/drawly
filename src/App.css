@@ -124,11 +124,19 @@
     flex-direction: column;
     justify-content: center; */
 }
-.calendar-entry{
+.calendar-entry-wrapper{
     height: 90%;
+    aspect-ratio: 1/1;
+    align-self: center;
+    justify-self: center;
+}
+.calendar-entry{
+    height: 100%;
     align-self: center;
     justify-self: center;
     border: 1px solid #FDB573;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
 }
 .calendar-entry-empty{
     height: 90%;

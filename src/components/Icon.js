@@ -18,7 +18,7 @@ const Icon = ({ key, svg, loc }) => {
     }
 
     return (
-        <div className='calendar-entry' style={{ gridArea: loc }}>
+        <div className='calendar-entry-wrapper' style={{ gridArea: loc }}>
             <Image key={key} className='calendar-entry' onClick={openModal} src={svg} roundedCircle />
             <ReactModal isOpen={modalVisible} onRequestClose={closeModal}>
                 <div className="modal-text">Filter by Line</div>
