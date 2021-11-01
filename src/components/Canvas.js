@@ -27,18 +27,18 @@ const SignOutButton = () => (
 const EraseCheckedButton = React.forwardRef((props, ref) => {
 
     const [checked, setChecked] = useState(true);
-    return(
-    <ToggleButton
-    className="mb-2"
-    id="toggle-check"
-    type="checkbox"
-    variant="outline-primary"
-    checked={checked}
-    value="0"
-    onChange={(e) => {setChecked(e.currentTarget.checked); ref.current.eraseMode(checked)}}
-  >
-    Eraser
-  </ToggleButton>
+    return (
+        <ToggleButton
+            className="mb-2"
+            id="toggle-check"
+            type="checkbox"
+            variant="outline-primary"
+            checked={checked}
+            value="0"
+            onChange={(e) => { setChecked(e.currentTarget.checked); ref.current.eraseMode(checked) }}
+        >
+            Eraser
+        </ToggleButton>
     )
 
 })
@@ -62,7 +62,7 @@ const EraseCheckedButton = React.forwardRef((props, ref) => {
 
 const ClearButton = React.forwardRef((props, ref) => (
     <Button
-    data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className='button-styling'>
+        data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className='button-styling'>
         Clear Canvas
     </Button>
 ));
@@ -77,6 +77,8 @@ const Canvas = React.forwardRef((props, ref) => {
     const canvas = ref ?? React.createRef();
     const [user] = useUserState();
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    const [strokeColor, setStrokeColor] = useState('#000000');
+    const [canvasColor, setCanvasColor] = useState('#FFFFFF');
 
     const getDate = () => {
         const today = new Date();
@@ -96,14 +98,16 @@ const Canvas = React.forwardRef((props, ref) => {
             .then(data => {
                 writeData(data, `${user.uid}/${getDatePath()}`);
                 canvas.current.clearCanvas();
-                enqueueSnackbar('Image successfully saved.', {anchorOrigin: {
-                    vertical: 'bottom',
-                    horizontal: 'center',
-                },variant: 'success', autoHideDuration: 850,});
+                enqueueSnackbar('Image successfully saved.', {
+                    anchorOrigin: {
+                        vertical: 'bottom',
+                        horizontal: 'center',
+                    }, variant: 'success', autoHideDuration: 850,
+                });
             })
             .catch(e => {
                 console.log(e);
-                enqueueSnackbar('Error saving image.', {variant: 'error'});
+                enqueueSnackbar('Error saving image.', { variant: 'error' });
             });
     }
     return (
@@ -112,11 +116,12 @@ const Canvas = React.forwardRef((props, ref) => {
                 <h1 className='date-styling'>{getDate()}</h1>
                 <h2 className='prompt-styling'>How are you feeling today?</h2>
             </div>
-            <div>
+            <div data-testid='canvas-div'>
                 <ReactSketchCanvas
                     ref={canvas}
                     strokeWidth={5}
-                    strokeColor="black"
+                    strokeColor={strokeColor}
+                    canvasColor={canvasColor}
                     height={300} // make dynamic
                     width={300} // make dynamic
                 />
@@ -124,10 +129,26 @@ const Canvas = React.forwardRef((props, ref) => {
             {user ? <Button className='button-styling' onClick={saveImage}>
                 Check in
             </Button> : null}
-            <UnDo ref = {canvas}/>
-            <EraseCheckedButton ref = {canvas}/>
-            <ClearButton ref={canvas}/>
-            {user ? <SignOutButton/> : <SignInButton className = 'signin-button-styling'/>}
+            <UnDo ref={canvas} />
+            <EraseCheckedButton ref={canvas} />
+            <ClearButton ref={canvas} />
+            <input
+                type="color"
+                className="form-control form-control-color"
+                value={strokeColor}
+                onChange={(e) => {
+                    setStrokeColor(e.target.value);
+                }}
+            ></input>
+            <input
+                type="color"
+                className="form-control form-control-color"
+                value={canvasColor}
+                onChange={(e) => {
+                    setCanvasColor(e.target.value);
+                }}
+            ></input>
+            {user ? <SignOutButton /> : <SignInButton className='signin-button-styling' />}
         </div>
     );
 });
