@@ -4,6 +4,7 @@ import { useData, useUserState } from '../utilities/firebase.js';
 import Image from 'react-bootstrap/Image'
 import ReactModal from 'react-modal';
 import Icon from './Icon'
+import {isMorning, isAfternoon} from '../App.js';
 
 const MONTH_MAP = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -17,6 +18,10 @@ const DATE_TO_GRID = [
 ]
 
 const today = new Date();
+
+const getCalendarLayoutStyling = (today) => {
+    return isMorning(today) ? 'morning-calendar-layout' : isAfternoon(today) ? 'afternoon-calendar-layout' : 'evening-calendar-layout';
+}
 
 const Calendar = () => {
     const [user] = useUserState();
@@ -73,7 +78,7 @@ const Calendar = () => {
     return (
         //         {/* <h1>Mood Log</h1> */}
         // {/* {loading ? <p>Images Loading</p> : formattedImages()} */}
-        <div className='calendar-layout'>
+        <div className={getCalendarLayoutStyling(today)}>
             {/* <div className='days-of-week'>
                 <h1>SU</h1><h1>MO</h1><h1>TU</h1><h1>WE</h1><h1>TH</h1><h1>FR</h1><h1>SA</h1>
             </div> */}

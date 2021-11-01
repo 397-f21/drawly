@@ -87,7 +87,7 @@
     border: 4px solid #FDE9D7;
     border-radius: 20px;
 }
-.morning-tab .tab-activated{
+.morning-tab .morning-tab-activated{
     height: 100%;
     width: 50%;
     background: #FDB573;
@@ -96,7 +96,7 @@
     align-items: center;
     justify-content: center;
 }
-.morning-tab .tab-deactivated{
+.morning-tab .morning-tab-deactivated{
     height: 100%;
     width: 50%;
     background: #FFFFFF;
@@ -113,7 +113,7 @@
     border: 4px solid #D7EBFD;
     border-radius: 20px;
 }
-.afternoon-tab .tab-activated{
+.afternoon-tab .afternoon-tab-activated{
     height: 100%;
     width: 50%;
     background: #69C1F2;
@@ -122,7 +122,7 @@
     align-items: center;
     justify-content: center;
 }
-.afternoon-tab .tab-deactivated{
+.afternoon-tab .afternoon-tab-deactivated{
     height: 100%;
     width: 50%;
     background: #FFFFFF;
@@ -139,7 +139,7 @@
     border: 4px solid #797D89;
     border-radius: 20px;
 }
-.evening-tab .tab-activated{
+.evening-tab .evening-tab-activated{
     height: 100%;
     width: 50%;
     background: #FDB573;
@@ -148,7 +148,7 @@
     align-items: center;
     justify-content: center;
 }
-.evening-tab .tab-deactivated{
+.evening-tab .evening-tab-deactivated{
     height: 100%;
     width: 50%;
     background: #FFFFFF;
@@ -247,7 +247,8 @@
 }
 
 .signin-button-styling{
-    background-color: #e9d1ba;
+    color: #FDB573;
+    background-color: #FFFFFF;
     width: 100px;
     height: 40px;
     border: none;
@@ -256,7 +257,8 @@
     font-size: 14px;
 }
 .morning-signin-button-styling{ /** UNUSED ATM */
-    background-color: #e9d1ba;
+    color: #FDB573;
+    background-color: #FFFFFF;
     width: 100px;
     height: 40px;
     border: none;
@@ -265,7 +267,8 @@
     font-size: 14px;
 }
 .afternoon-signin-button-styling{ /** UNUSED ATM */
-    background-color: #bac3e9; /** CHANGE COLOR */
+    color: #69C1F2;
+    background-color: #FFFFFF;
     width: 100px;
     height: 40px;
     border: none;
@@ -274,7 +277,8 @@
     font-size: 14px;
 }
 .evening-signin-button-styling{ /** UNUSED ATM */
-    background-color: #e9d1ba; /** CHANGE COLOR */
+    color: #B0C6FF;
+    background-color: #FFFFFF;
     width: 100px;
     height: 40px;
     border: none;
@@ -320,7 +324,7 @@
     height: 100%;
     align-self: center;
     justify-self: center;
-    border: 1px solid #FDB573;
+    border: 1px solid #FFFFFF;
     border-radius: 50%;
     aspect-ratio: 1/1;
 }
@@ -328,7 +332,7 @@
     height: 90%;
     align-self: center;
     justify-self: center;
-    border: 1px solid #FDB573;
+    border: 1px solid #FFFFFF;
     border-radius: 50%;
     aspect-ratio: 1/1;
 }
@@ -358,6 +362,57 @@
     font-weight: 800;
     font-size: 24px;
     color: #FDB573;
+    text-align: left;
+    align-self: center;
+    justify-self: center;
+    max-width: 500px;
+    /* width: 84%;
+    /* text-align: left; */ 
+}
+
+.morning-calendar-layout h2{
+    margin-bottom: 30px;
+    /* aspect-ratio: 1/1; */
+    width: 90%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    color: #FDB573;
+    text-align: left;
+    align-self: center;
+    justify-self: center;
+    max-width: 500px;
+    /* width: 84%;
+    /* text-align: left; */ 
+}
+
+.afternoon-calendar-layout h2{
+    margin-bottom: 30px;
+    /* aspect-ratio: 1/1; */
+    width: 90%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    color: #69C1F2;
+    text-align: left;
+    align-self: center;
+    justify-self: center;
+    max-width: 500px;
+    /* width: 84%;
+    /* text-align: left; */ 
+}
+
+.evening-calendar-layout h2{
+    margin-bottom: 30px;
+    /* aspect-ratio: 1/1; */
+    width: 90%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    color: #B0C6FF;
     text-align: left;
     align-self: center;
     justify-self: center;

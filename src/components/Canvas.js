@@ -21,7 +21,7 @@ const getSigninButtonStyling = (today) => {
 
 const SignInButton = () => (
     <Button
-        onClick={() => signInWithGoogle()} className='signin-button-styling'>
+        onClick={() => signInWithGoogle()} className={getSigninButtonStyling(today)}>
         Sign In
     </Button>
 );
@@ -30,7 +30,7 @@ const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
 
 const SignOutButton = () => (
     <Button
-        onClick={() => signOut()} className='signin-button-styling'>
+        onClick={() => signOut()} className={getSigninButtonStyling(today)}>
         Sign Out
     </Button>
 );
