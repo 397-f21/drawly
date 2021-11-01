@@ -7,6 +7,17 @@ import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.j
 import { useSnackbar } from 'notistack';
 import ToggleButton from 'react-bootstrap/ToggleButton'
 import { ref } from "@firebase/database";
+import {isMorning, isAfternoon} from '../App.js';
+
+const today = new Date();
+
+const getButtonStyling = (today) => {
+    return isMorning(today) ? 'morning-button-styling' : isAfternoon(today) ? 'afternoon-button-styling' : 'evening-button-styling';
+}
+
+const getSigninButtonStyling = (today) => {
+    return isMorning(today) ? 'morning-signin-button-styling' : isAfternoon(today) ? 'afternoon-signin-button-styling' : 'evening-signin-button-styling';
+}
 
 const SignInButton = () => (
     <Button
@@ -62,7 +73,7 @@ const EraseCheckedButton = React.forwardRef((props, ref) => {
 
 const ClearButton = React.forwardRef((props, ref) => (
     <Button
-    data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className='button-styling'>
+    data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className={getButtonStyling(today)}>
         Clear Canvas
     </Button>
 ));
@@ -109,7 +120,8 @@ const Canvas = React.forwardRef((props, ref) => {
     return (
         <div className='canvas-layout'>
             <div className='date-wrapper'>
-                <h1 className='date-styling'>{getDate()}</h1>
+                <h1 className={isMorning(today) ? 'morning-date-styling' : isAfternoon(today) ? 'afternoon-date-styling' : 'evening-date-styling'}>{getDate()}</h1>
+                <h2 className='prompt-styling'>{isMorning(today)? 'Good morning!' : isAfternoon(today)? 'Good afternoon!' : 'Good evening!'}</h2>
                 <h2 className='prompt-styling'>How are you feeling today?</h2>
             </div>
             <div>
@@ -121,13 +133,13 @@ const Canvas = React.forwardRef((props, ref) => {
                     width={300} // make dynamic
                 />
             </div>
-            {user ? <Button className='button-styling' onClick={saveImage}>
+            {user ? <Button className={getButtonStyling(today)} onClick={saveImage}>
                 Check in
             </Button> : null}
             <UnDo ref = {canvas}/>
             <EraseCheckedButton ref = {canvas}/>
             <ClearButton ref={canvas}/>
-            {user ? <SignOutButton/> : <SignInButton className = 'signin-button-styling'/>}
+            {user ? <SignOutButton/> : <SignInButton className = {getSigninButtonStyling(today)}/>}
         </div>
     );
 });
