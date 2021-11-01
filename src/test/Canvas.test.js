@@ -47,3 +47,12 @@ describe("Clear canvas button", () => {
         expect(ref.current.state.currentPaths.length).toBe(0);
     });
 });
+
+
+describe("Canvas renders", () => {
+  it("Tests if canvas renders", () => {
+      const { getByTestId } = render(<Canvas />);
+      const canvasRenders = getByTestId('canvas-renders');
+      expect(canvasRenders).toBeTruthy();
+  });
+});
