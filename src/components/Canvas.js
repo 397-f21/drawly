@@ -54,23 +54,6 @@ const EraseCheckedButton = React.forwardRef((props, ref) => {
 
 })
 
-
-// const EraseButton = forwardRef((props, ref) => (
-//     <ToggleButton
-//     className="mb-2"
-//     id="toggle-check"
-//     type="checkbox"
-//     variant="outline-primary"
-//     checked={false}
-//     value="1"
-//     onChange={(checked) => ref.current.eraseMode(checked)}
-//   >
-//     Erase Mode
-//   </ToggleButton>
-
-// ));
-
-
 const ClearButton = React.forwardRef((props, ref) => (
     <Button
     data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className={getButtonStyling(today)}>

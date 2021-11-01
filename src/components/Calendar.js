@@ -26,20 +26,8 @@ const getCalendarLayoutStyling = (today) => {
 const Calendar = () => {
     const [user] = useUserState();
     const [images, loading, error] = useData(user ? user.uid : "no_user");
-    // const [modalVisible, setModalVisible] = useState(false);
-
-    // ReactModal.setAppElement('#root');
-
-    // const openModal = () => {
-    //     setModalVisible(true);
-    // }
-
-    // const closeModal = () => {
-    //     setModalVisible(false);
-    // }
 
     const generateCalendar = () => {
-        // const today = new Date();
         const year = today.getFullYear();
         const month = today.getMonth();
         const firstOfMonthDay = new Date(year, month, 1).getDay();
@@ -56,7 +44,6 @@ const Calendar = () => {
     }
 
     const generateCalendarRange = () => {
-        // const today = new Date();
         const year = today.getFullYear();
         const month = today.getMonth();
         const firstOfMonthDay = new Date(year, month, 1).getDay();
@@ -76,16 +63,9 @@ const Calendar = () => {
     }
 
     return (
-        //         {/* <h1>Mood Log</h1> */}
-        // {/* {loading ? <p>Images Loading</p> : formattedImages()} */}
         <div className={getCalendarLayoutStyling(today)}>
-            {/* <div className='days-of-week'>
-                <h1>SU</h1><h1>MO</h1><h1>TU</h1><h1>WE</h1><h1>TH</h1><h1>FR</h1><h1>SA</h1>
-            </div> */}
             <h2>{MONTH_MAP[today.getMonth()] + ' ' + today.getFullYear()}</h2>
             <div className='calendar-grid'>
-                {/* <div style={{gridArea: 'a00' , background: '#FFFFFF', height: '100%', width: '100%'}}></div> */}
-                {/* <h2 style={{gridArea: 'mmm'}}> {MONTH_MAP[today.getMonth()] + ' ' + today.getFullYear()} </h2> */}
                 <h1 style={{ gridArea: 'dd0' }}>SU</h1>
                 <h1 style={{ gridArea: 'dd1' }}>MO</h1>
                 <h1 style={{ gridArea: 'dd2' }}>TU</h1>
@@ -96,11 +76,6 @@ const Calendar = () => {
                 {generateCalendar()}
                 {loading ? <p>Images Loading</p> : formattedImages()}
             </div>
-            {/* <ReactModal isOpen={modalVisible} onRequestClose={closeModal}>
-                <div className="modal-text">Filter by Line</div>
-                <FilterCards selectedLines={selectedLines} setSelectedLines={setSelectedLines} />
-                <button className="btn btn-primary" onClick={closeModal}>Close</button>
-            </ReactModal> */}
         </div>
     )
 }
