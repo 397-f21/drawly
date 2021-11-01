@@ -7,7 +7,7 @@ import Tab from './components/Tab.js'
 const today = new Date();
 
 export const isMorning = (time) => {
-    return time.getHours() > 0 && time.getHours() <= 12
+    return time.getHours() > 0 && time.getHours() <= 12;
 }
 
 export const isAfternoon = (time) => {

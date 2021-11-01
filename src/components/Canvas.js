@@ -19,6 +19,10 @@ const getSigninButtonStyling = (today) => {
     return isMorning(today) ? 'morning-signin-button-styling' : isAfternoon(today) ? 'afternoon-signin-button-styling' : 'evening-signin-button-styling';
 }
 
+const getPromptStyling = (today) => {
+    return isMorning(today) ? 'prompt-styling' : isAfternoon(today) ? 'prompt-styling' : 'evening-prompt-styling'; 
+}
+
 const SignInButton = () => (
     <Button
         onClick={() => signInWithGoogle()} className={getSigninButtonStyling(today)}>
@@ -104,8 +108,8 @@ const Canvas = React.forwardRef((props, ref) => {
         <div className='canvas-layout'>
             <div className='date-wrapper'>
                 <h1 className={isMorning(today) ? 'morning-date-styling' : isAfternoon(today) ? 'afternoon-date-styling' : 'evening-date-styling'}>{getDate()}</h1>
-                <h2 className='prompt-styling'>{isMorning(today)? 'Good morning!' : isAfternoon(today)? 'Good afternoon!' : 'Good evening!'}</h2>
-                <h2 className='prompt-styling'>How are you feeling today?</h2>
+                <h2 className={getPromptStyling(today)}>{isMorning(today)? 'Good morning!' : isAfternoon(today)? 'Good afternoon!' : 'Good evening!'}</h2>
+                <h2 className={getPromptStyling(today)}>Draw how you feel today:</h2>
             </div>
             <div>
                 <ReactSketchCanvas
