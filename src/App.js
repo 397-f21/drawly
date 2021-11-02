@@ -11,7 +11,7 @@ export const isMorning = (time) => {
 }
 
 export const isAfternoon = (time) => {
-    return time.getHours() > 18//12 && time.getHours() <= 18
+    return time.getHours() > 12 && time.getHours() <= 18
 }
 
 const getLayoutStyling = (today) => {
