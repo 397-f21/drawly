@@ -36,12 +36,12 @@ const Calendar = () => {
         const month = today.getMonth();
         const firstOfMonthDay = new Date(year, month, 1).getDay();
         const lastOfMonthDay = new Date(year, month + 1, 0).getDate();
-        const mapRange = Array.from({ length: lastOfMonthDay }, (_, i) => DATE_TO_GRID[firstOfMonthDay + i]);
-        console.log(mapRange)
+        const mapRange = Array.from({length: lastOfMonthDay}, (_, i) => DATE_TO_GRID[firstOfMonthDay + i]);
+        // console.log(mapRange)
         return (
             mapRange.map(thisGridArea => {
                 return (
-                    <div className='calendar-entry-empty' style={{ gridArea: thisGridArea }}></div>
+                    <div key={thisGridArea} className='calendar-entry-empty' style={{gridArea: thisGridArea}}></div>
                 )
             })
         )
@@ -67,7 +67,12 @@ const Calendar = () => {
     }
 
     return (
-        <div className={getCalendarLayoutStyling(today)}>
+            //         {/* <h1>Mood Log</h1> */}
+            // {/* {loading ? <p>Images Loading</p> : formattedImages()} */}
+        <div className='calendar-layout' data-testid="cal">
+            {/* <div className='days-of-week'>
+                <h1>SU</h1><h1>MO</h1><h1>TU</h1><h1>WE</h1><h1>TH</h1><h1>FR</h1><h1>SA</h1>
+            </div> */}
             <h2>{MONTH_MAP[today.getMonth()] + ' ' + today.getFullYear()}</h2>
             <div className='calendar-grid'>
                 <h1 style={{ gridArea: 'dd0', color: getDayOfWeekColor(today)}}>SU</h1>
