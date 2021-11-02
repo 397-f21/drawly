@@ -135,25 +135,33 @@ const Canvas = React.forwardRef((props, ref) => {
             </div>
             <div className='tools-grid'>
                 <div style={{ gridArea: 'brush'}}>
-                    <input
-                    type="color"
-                    className="tool-circle"
-                    data-testid='stroke-color-input'
-                    value={strokeColor}
-                    onChange={(e) => {
-                        setStrokeColor(e.target.value);
-                    }}></input>
+                    <div className='tool-circle'
+                    style={{backgroundColor: strokeColor}}>
+                        <input
+                        type="color"
+                        className='tool-circle'
+                        style={{opacity: 0}}
+                        data-testid='stroke-color-input'
+                        value={strokeColor}
+                        onChange={(e) => {
+                            setStrokeColor(e.target.value);
+                        }}></input>
+                    </div>
                 </div>
                 <div style={{ gridArea: 'background'}}>
-                    <input
-                    type="color"
-                    className="tool-circle"
-                    data-testid='canvas-color-input'
-                    value={canvasColor}
-                    onChange={(e) => {
-                        setCanvasColor(e.target.value);
-                    }}>
-                    </input>
+                    <div className='tool-circle'
+                    style={{backgroundColor: canvasColor}}>
+                        <input
+                        type="color"
+                        className="tool-circle"
+                        style={{opacity: 0}}
+                        data-testid='canvas-color-input'
+                        value={canvasColor}
+                        onChange={(e) => {
+                            setCanvasColor(e.target.value);
+                        }}>
+                        </input>
+                    </div>
                 </div>
                 <div style={{ gridArea: 'eraser'}}>
                     <EraseCheckedButton ref={canvas} />
