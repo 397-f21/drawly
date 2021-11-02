@@ -1,4 +1,4 @@
-.layout{
+.morning-layout{
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -7,6 +7,26 @@
     flex-direction: column;
     text-align: center;
     background: linear-gradient(180deg, #FFFFFF 0%, #FFE9AF 100%);
+}
+.afternoon-layout{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background: linear-gradient(180deg, #FFFFFF 0%, #B6D3FF 100%);
+}
+.evening-layout{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background: linear-gradient(180deg, #4B4B4B 0%, #1F305C 100%);
 }
 .header{
     height: 10%;
@@ -23,7 +43,7 @@
     align-items: center;
     justify-content: center;
 }
-.tab{
+.morning-tab{
     display: flex;
     width: 228px;
     height: 45px;
@@ -31,7 +51,7 @@
     border: 4px solid #FDE9D7;
     border-radius: 20px;
 }
-.tab .tab-activated{
+.morning-tab .morning-tab-activated{
     height: 100%;
     width: 50%;
     background: #FDB573;
@@ -40,7 +60,59 @@
     align-items: center;
     justify-content: center;
 }
-.tab .tab-deactivated{
+.morning-tab .morning-tab-deactivated{
+    height: 100%;
+    width: 50%;
+    background: #FFFFFF;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.afternoon-tab{
+    display: flex;
+    width: 228px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 4px solid #D7EBFD;
+    border-radius: 20px;
+}
+.afternoon-tab .afternoon-tab-activated{
+    height: 100%;
+    width: 50%;
+    background: #69C1F2;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.afternoon-tab .afternoon-tab-deactivated{
+    height: 100%;
+    width: 50%;
+    background: #FFFFFF;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.evening-tab{
+    display: flex;
+    width: 228px;
+    height: 45px;
+    background: #FFFFFF;
+    border: 4px solid #797D89;
+    border-radius: 20px;
+}
+.evening-tab .evening-tab-activated{
+    height: 100%;
+    width: 50%;
+    background: #B0C6FF;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.evening-tab .evening-tab-deactivated{
     height: 100%;
     width: 50%;
     background: #FFFFFF;
@@ -63,12 +135,28 @@
     width: 85%;
     align-items: flex-start;
 }
-.date-styling{
+.morning-date-styling{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
     font-size: 16px;
     font-weight: 800;
     color: #FDB573;
+
+}
+.afternoon-date-styling{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 800;
+    color: #69C1F2;
+
+}
+.evening-date-styling{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 800;
+    color: #96B3FF;
 
 }
 .prompt-styling{
@@ -77,8 +165,33 @@
     text-align: left;
     font-size: 24px;
 }
-.button-styling{
+.evening-prompt-styling{
+    color: #FFFFFF;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 800;
+    text-align: left;
+    font-size: 24px;
+}
+.morning-button-styling{
     background-color: #FDB573;
+    width: 172px;
+    height: 45px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 16px;
+}
+.afternoon-button-styling{
+    background-color: #69C1F2;
+    width: 172px;
+    height: 45px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 800;
+    font-size: 16px;
+}
+.evening-button-styling{
+    background-color: #B0C6FF;
     width: 172px;
     height: 45px;
     border: none;
@@ -88,11 +201,38 @@
 }
 
 .signin-button-styling{
-    background-color: #e9d1ba;
+    color: #FDB573;
+    background-color: #FFFFFF;
     width: 100px;
     height: 40px;
     border: none;
-    /* border-radius: 20px; */
+    font-weight: 500;
+    font-size: 14px;
+}
+.morning-signin-button-styling{ 
+    color: #FDB573;
+    background-color: #FFFFFF;
+    width: 100px;
+    height: 40px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+.afternoon-signin-button-styling{ 
+    color: #69C1F2;
+    background-color: #FFFFFF;
+    width: 100px;
+    height: 40px;
+    border: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+.evening-signin-button-styling{ 
+    color: #B0C6FF;
+    background-color: #FFFFFF;
+    width: 100px;
+    height: 40px;
+    border: none;
     font-weight: 500;
     font-size: 14px;
 }
@@ -119,10 +259,6 @@
         "a03 a13 a23 a33 a43 a53 a63"
         "a04 a14 a24 a34 a44 a54 a64"
         "a05 a15 a25 a35 a45 a55 a65";
-    /* display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center; */
 }
 .calendar-entry-wrapper{
     height: 90%;
@@ -134,7 +270,7 @@
     height: 100%;
     align-self: center;
     justify-self: center;
-    border: 1px solid #FDB573;
+    border: 1px solid #FFFFFF;
     border-radius: 50%;
     aspect-ratio: 1/1;
 }
@@ -142,16 +278,10 @@
     height: 90%;
     align-self: center;
     justify-self: center;
-    border: 1px solid #FDB573;
+    border: 1px solid #FFFFFF;
     border-radius: 50%;
     aspect-ratio: 1/1;
 }
-/* .days-of-week{
-    width: 90%;
-    max-width: 500px;
-    display: flex;
-    justify-content: space-around;
-} */
 .calendar-grid h1{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
@@ -161,11 +291,23 @@
     margin: 0;
     align-self: center;
     justify-self: center;
-    /* margin-bottom: 30px; */
 }
 .calendar-layout h2{
     margin-bottom: 30px;
-    /* aspect-ratio: 1/1; */
+    width: 90%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    color: #FDB573;
+    text-align: left;
+    align-self: center;
+    justify-self: center;
+    max-width: 500px; 
+}
+
+.morning-calendar-layout h2{
+    margin-bottom: 30px;
     width: 90%;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
@@ -176,6 +318,32 @@
     align-self: center;
     justify-self: center;
     max-width: 500px;
-    /* width: 84%;
-    /* text-align: left; */ 
+}
+
+.afternoon-calendar-layout h2{
+    margin-bottom: 30px;
+    width: 90%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    color: #69C1F2;
+    text-align: left;
+    align-self: center;
+    justify-self: center;
+    max-width: 500px;
+}
+
+.evening-calendar-layout h2{
+    margin-bottom: 30px;
+    width: 90%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    color: #B0C6FF;
+    text-align: left;
+    align-self: center;
+    justify-self: center;
+    max-width: 500px;
 }

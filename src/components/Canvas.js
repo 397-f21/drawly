@@ -6,11 +6,25 @@ import { writeData } from '../utilities/firebase';
 import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 import { useSnackbar } from 'notistack';
 import ToggleButton from 'react-bootstrap/ToggleButton'
-import { ref } from "@firebase/database";
+import {isMorning, isAfternoon} from '../App.js';
+
+const today = new Date();
+
+const getButtonStyling = (today) => {
+    return isMorning(today) ? 'morning-button-styling' : isAfternoon(today) ? 'afternoon-button-styling' : 'evening-button-styling';
+}
+
+const getSigninButtonStyling = (today) => {
+    return isMorning(today) ? 'morning-signin-button-styling' : isAfternoon(today) ? 'afternoon-signin-button-styling' : 'evening-signin-button-styling';
+}
+
+const getPromptStyling = (today) => {
+    return isMorning(today) ? 'prompt-styling' : isAfternoon(today) ? 'prompt-styling' : 'evening-prompt-styling'; 
+}
 
 const SignInButton = () => (
     <Button
-        onClick={() => signInWithGoogle()} className='signin-button-styling'>
+        onClick={() => signInWithGoogle()} className={getSigninButtonStyling(today)}>
         Sign In
     </Button>
 );
@@ -19,7 +33,7 @@ const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
 
 const SignOutButton = () => (
     <Button
-        onClick={() => signOut()} className='signin-button-styling'>
+        onClick={() => signOut()} className={getSigninButtonStyling(today)}>
         Sign Out
     </Button>
 );
@@ -43,26 +57,9 @@ const EraseCheckedButton = React.forwardRef((props, ref) => {
 
 })
 
-
-// const EraseButton = forwardRef((props, ref) => (
-//     <ToggleButton
-//     className="mb-2"
-//     id="toggle-check"
-//     type="checkbox"
-//     variant="outline-primary"
-//     checked={false}
-//     value="1"
-//     onChange={(checked) => ref.current.eraseMode(checked)}
-//   >
-//     Erase Mode
-//   </ToggleButton>
-
-// ));
-
-
 const ClearButton = React.forwardRef((props, ref) => (
     <Button
-        data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className='button-styling'>
+    data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className={getButtonStyling(today)}>
         Clear Canvas
     </Button>
 ));
@@ -113,8 +110,9 @@ const Canvas = React.forwardRef((props, ref) => {
     return (
         <div className='canvas-layout'>
             <div className='date-wrapper'>
-                <h1 className='date-styling'>{getDate()}</h1>
-                <h2 className='prompt-styling'>How are you feeling today?</h2>
+                <h1 className={isMorning(today) ? 'morning-date-styling' : isAfternoon(today) ? 'afternoon-date-styling' : 'evening-date-styling'}>{getDate()}</h1>
+                <h2 className={getPromptStyling(today)}>{isMorning(today)? 'Good morning!' : isAfternoon(today)? 'Good afternoon!' : 'Good evening!'}</h2>
+                <h2 className={getPromptStyling(today)}>Draw how you feel today:</h2>
             </div>
             <div data-testid='canvas-div'>
                 <ReactSketchCanvas
@@ -126,7 +124,7 @@ const Canvas = React.forwardRef((props, ref) => {
                     width={300} // make dynamic
                 />
             </div>
-            {user ? <Button className='button-styling' onClick={saveImage}>
+            {user ? <Button className={getButtonStyling(today)} onClick={saveImage}>
                 Check in
             </Button> : null}
             <UnDo ref={canvas} />
@@ -150,7 +148,7 @@ const Canvas = React.forwardRef((props, ref) => {
                     setCanvasColor(e.target.value);
                 }}
             ></input>
-            {user ? <SignOutButton /> : <SignInButton className='signin-button-styling' />}
+            {user ? <SignOutButton/> : <SignInButton className = {getSigninButtonStyling(today)}/>}
         </div>
     );
 });
