@@ -27,6 +27,10 @@ const getDayOfWeekColor = (today) => {
     return isMorning(today) ? '#595959' : isAfternoon(today) ? '#595959' : '#FFFFFF';
 }
 
+const getTimeOfDayBorder = (today) => {
+    return isMorning(today) ? '1px solid #595959' : isAfternoon(today) ? '1px solid #595959' : '1px solid #FFFFFF';
+}
+
 const Calendar = () => {
     const [user] = useUserState();
     const [images, loading, error] = useData(user ? user.uid : "no_user");
@@ -41,7 +45,7 @@ const Calendar = () => {
         return (
             mapRange.map(thisGridArea => {
                 return (
-                    <div className='calendar-entry-empty' style={{ gridArea: thisGridArea }}></div>
+                    <div className='calendar-entry-empty' style={{ gridArea: thisGridArea, border: getTimeOfDayBorder(today)}}></div>
                 )
             })
         )
