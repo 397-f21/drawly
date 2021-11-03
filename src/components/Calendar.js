@@ -40,12 +40,12 @@ const Calendar = () => {
         const month = today.getMonth();
         const firstOfMonthDay = new Date(year, month, 1).getDay();
         const lastOfMonthDay = new Date(year, month + 1, 0).getDate();
-        const mapRange = Array.from({ length: lastOfMonthDay }, (_, i) => DATE_TO_GRID[firstOfMonthDay + i]);
-        console.log(mapRange)
+        const mapRange = Array.from({length: lastOfMonthDay}, (_, i) => DATE_TO_GRID[firstOfMonthDay + i]);
+        // console.log(mapRange)
         return (
             mapRange.map(thisGridArea => {
                 return (
-                    <div className='calendar-entry-empty' style={{ gridArea: thisGridArea, border: getTimeOfDayBorder(today)}}></div>
+                    <div key={thisGridArea} className='calendar-entry-empty' style={{ gridArea: thisGridArea, border: getTimeOfDayBorder(today)}}></div>
                 )
             })
         )
@@ -71,7 +71,7 @@ const Calendar = () => {
     }
 
     return (
-        <div className={getCalendarLayoutStyling(today)}>
+        <div className={getCalendarLayoutStyling(today)} data-testid="cal">
             <h2>{MONTH_MAP[today.getMonth()] + ' ' + today.getFullYear()}</h2>
             <div className='calendar-grid'>
                 <h1 style={{ gridArea: 'dd0', color: getDayOfWeekColor(today)}}>SU</h1>
