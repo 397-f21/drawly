@@ -65,7 +65,6 @@ const Calendar = () => {
         return (Object.keys(images ?? {}).map(key => {
             const imageDateIndex = new Date(key).getDate() - 1;
             const imageDateMonth = new Date(key).getMonth();
-            console.log(key)
             return (imageDateMonth === today.getMonth()) ? <Icon key={key} date_string={key} svg={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} loc={mapRange[imageDateIndex]} /> : null;
         }
         ));

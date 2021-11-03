@@ -15,7 +15,7 @@ const customStyles = {
     }
 }
 
-const Icon = ({ key, date_string, svg, loc }) => {
+const Icon = ({ date_string, svg, loc }) => {
     const [modalVisible, setModalVisible] = useState(false);
 
     ReactModal.setAppElement('#root');
@@ -29,9 +29,7 @@ const Icon = ({ key, date_string, svg, loc }) => {
     }
 
     const getDate = (date_string) => {
-        console.log(date_string)
         const date = new Date(date_string);
-        console.log(date)
         const month = MONTH_MAP[date.getMonth()];
         const day = DAY_MAP[date.getDay()];
         const this_date = date.getDate();
@@ -40,7 +38,7 @@ const Icon = ({ key, date_string, svg, loc }) => {
 
     return (
         <div className='calendar-entry-wrapper' style={{ gridArea: loc }}>
-            <Image key={key} className='calendar-entry' onClick={openModal} src={svg} roundedCircle />
+            <Image key={date_string} className='calendar-entry' onClick={openModal} src={svg} roundedCircle />
             <ReactModal isOpen={modalVisible} onRequestClose={closeModal} className="modal-styling" style={customStyles}>
                 <div onClick={closeModal}>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +47,7 @@ const Icon = ({ key, date_string, svg, loc }) => {
                 </div>
                 <div className="modal-text">Your drawing on</div>
                 <div className="modal-text-date">{getDate(date_string)}</div>
-                <Image key={key} className='modal-face' onClick={openModal} src={svg} roundedCircle />
+                <Image key={date_string} className='modal-face' onClick={openModal} src={svg} roundedCircle />
             </ReactModal>
         </div>
     )

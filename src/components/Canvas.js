@@ -66,6 +66,7 @@ const Canvas = React.forwardRef((props, ref) => {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const [strokeColor, setStrokeColor] = useState('#000000');
     const [canvasColor, setCanvasColor] = useState('#FFFFFF');
+    const [backgroundImage, setBackgroundImage] = useState('https://cs397-drawly.firebaseapp.com/drawface.jpg');
 
     const getDate = () => {
         const today = new Date();
@@ -112,6 +113,8 @@ const Canvas = React.forwardRef((props, ref) => {
                     canvasColor={canvasColor}
                     height={300} // make dynamic
                     width={300} // make dynamic
+                    backgroundImage={backgroundImage}
+                    onUpdate={() => setBackgroundImage('')}
                 />
             </div>
             <div className='tools-grid'>
@@ -140,6 +143,7 @@ const Canvas = React.forwardRef((props, ref) => {
                         value={canvasColor}
                         onChange={(e) => {
                             setCanvasColor(e.target.value);
+                            setBackgroundImage('');
                         }}>
                         </input>
                     </div>
