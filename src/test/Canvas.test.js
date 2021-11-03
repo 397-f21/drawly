@@ -50,6 +50,7 @@ describe("Canvas renders", () => {
   });
 });
 
+
 describe("Color picking inputs affect canvas", () => {
   it("Tests if changing canvas color input changes canvas background color", async () => {
     const ref = React.createRef();
@@ -70,4 +71,13 @@ describe("Color picking inputs affect canvas", () => {
     expect(colorInput.value).toBe(testColor);
     expect(ref.current.props.strokeColor).toBe(testColor);
   });
+
+  describe("notification renders after user submit", () => {
+    it("Tests if notification renders", () => {
+      const { getByTestId } = <Canvas />;
+      const canvasRenders = getByTestId('notification-div');
+      expect(canvasRenders).toBeTruthy();
+    });
+  });
+  
 });
