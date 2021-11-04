@@ -153,6 +153,13 @@
     align-items: center;
     justify-content: center;
 }
+.tool-circle-wrap{
+    position: relative;
+    display: inline-block; 
+}
+.tool-circle-wrap svg {
+    position: absolute;
+}
 .tool-circle-toggled{
     border: 4px solid #FFFFFF;
     width: 50px;
