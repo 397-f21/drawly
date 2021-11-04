@@ -5,49 +5,31 @@ import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
 import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 import { useSnackbar } from 'notistack';
-import ToggleButton from 'react-bootstrap/ToggleButton'
-import {isMorning, isAfternoon} from '../App.js';
+import {isMorning, isAfternoon, getButtonStyling, getClearButtonStyling, getSigninButtonStyling, getPromptStyling} from '../utilities/time.js';
 import '../Canvas.svg';
 
-const today = new Date();
+const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-const getButtonStyling = (today) => {
-    return isMorning(today) ? 'morning-button-styling' : isAfternoon(today) ? 'afternoon-button-styling' : 'evening-button-styling';
-}
-
-const getClearButtonStyling = (today) => {
-    return isMorning(today) ? 'morning-clear-button-styling' : isAfternoon(today) ? 'afternoon-clear-button-styling' : 'evening-clear-button-styling';
-}
-
-const getSigninButtonStyling = (today) => {
-    return isMorning(today) ? 'morning-signin-button-styling' : isAfternoon(today) ? 'afternoon-signin-button-styling' : 'evening-signin-button-styling';
-}
-
-const getPromptStyling = (today) => {
-    return isMorning(today) ? 'prompt-styling' : isAfternoon(today) ? 'prompt-styling' : 'evening-prompt-styling'; 
-}
+const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 const SignInButton = () => (
     <Button
-        onClick={() => signInWithGoogle()} className={getSigninButtonStyling(today)}>
+        onClick={() => signInWithGoogle()} className={getSigninButtonStyling()}>
         Sign In
     </Button>
 );
-const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 
 const SignOutButton = () => (
     <Button
-        onClick={() => signOut()} className={getSigninButtonStyling(today)}>
+        onClick={() => signOut()} className={getSigninButtonStyling()}>
         Sign Out
     </Button>
 );
 
 
-
 const ClearButton = React.forwardRef((props, ref) => (
     <Button
-    data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className={getClearButtonStyling(today)}>
+    data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className={getClearButtonStyling()}>
         Clear Canvas
     </Button>
 ));
@@ -101,9 +83,9 @@ const Canvas = React.forwardRef((props, ref) => {
     return (
         <div className='canvas-layout'>
             <div className='date-wrapper'>
-                <h1 className={isMorning(today) ? 'morning-date-styling' : isAfternoon(today) ? 'afternoon-date-styling' : 'evening-date-styling'}>{getDate()}</h1>
-                <h2 className={getPromptStyling(today)}>{isMorning(today)? 'Good morning!' : isAfternoon(today)? 'Good afternoon!' : 'Good evening!'}</h2>
-                <h2 className={getPromptStyling(today)}>Draw how you feel today:</h2>
+                <h1 className={isMorning() ? 'morning-date-styling' : isAfternoon() ? 'afternoon-date-styling' : 'evening-date-styling'}>{getDate()}</h1>
+                <h2 className={getPromptStyling()}>{isMorning()? 'Good morning!' : isAfternoon()? 'Good afternoon!' : 'Good evening!'}</h2>
+                <h2 className={getPromptStyling()}>Draw how you feel today:</h2>
             </div>
             <div data-testid='canvas-div'>
                 <ReactSketchCanvas
@@ -155,10 +137,10 @@ const Canvas = React.forwardRef((props, ref) => {
         
             <ClearButton ref={canvas} />
             
-            {user ? <Button className={getButtonStyling(today)} onClick={saveImage}>
+            {user ? <Button className={getButtonStyling()} onClick={saveImage}>
                 Check in
             </Button> : null}
-            {user ? <SignOutButton/> : <SignInButton className = {getSigninButtonStyling(today)}/>}
+            {user ? <SignOutButton/> : <SignInButton className = {getSigninButtonStyling()}/>}
         </div>
     );
 });

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { useState } from 'react';
 import Image from 'react-bootstrap/Image'
-
 import ReactModal from 'react-modal';
 
 const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
