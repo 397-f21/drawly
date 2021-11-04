@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
 import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 import { useSnackbar } from 'notistack';
-import {isMorning, isAfternoon, getButtonStyling, getClearButtonStyling, getSigninButtonStyling, getPromptStyling} from '../utilities/time.js';
+import {getButtonStyling, getClearButtonStyling, getSigninButtonStyling, getPromptStyling, getDateStyling, getPromptGreeting} from '../utilities/time.js';
 import '../Canvas.svg';
 
 const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -14,14 +14,14 @@ const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
 
 const SignInButton = () => (
     <Button
-        onClick={() => signInWithGoogle()} className={getSigninButtonStyling()}>
+        onClick={() => signInWithGoogle()} className = 'signin-button-styling' style={{color: getSigninButtonStyling()}}>
         Sign In
     </Button>
 );
 
 const SignOutButton = () => (
     <Button
-        onClick={() => signOut()} className={getSigninButtonStyling()}>
+        onClick={() => signOut()} className = 'signin-button-styling' style={{color: getSigninButtonStyling()}}>
         Sign Out
     </Button>
 );
@@ -29,7 +29,7 @@ const SignOutButton = () => (
 
 const ClearButton = React.forwardRef((props, ref) => (
     <Button
-    data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className={getClearButtonStyling()}>
+    data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className = 'clear-button-styling' style={{background: getClearButtonStyling()}}>
         Clear Canvas
     </Button>
 ));
@@ -83,8 +83,8 @@ const Canvas = React.forwardRef((props, ref) => {
     return (
         <div className='canvas-layout'>
             <div className='date-wrapper'>
-                <h1 className={isMorning() ? 'morning-date-styling' : isAfternoon() ? 'afternoon-date-styling' : 'evening-date-styling'}>{getDate()}</h1>
-                <h2 className={getPromptStyling()}>{isMorning()? 'Good morning!' : isAfternoon()? 'Good afternoon!' : 'Good evening!'}</h2>
+                <h1 className='date-styling' style={{color: getDateStyling()}}>{getDate()}</h1>
+                <h2 className={getPromptStyling()}>{getPromptGreeting()}</h2>
                 <h2 className={getPromptStyling()}>Draw how you feel today:</h2>
             </div>
             <div data-testid='canvas-div'>
@@ -137,10 +137,10 @@ const Canvas = React.forwardRef((props, ref) => {
         
             <ClearButton ref={canvas} />
             
-            {user ? <Button className={getButtonStyling()} onClick={saveImage}>
+            {user ? <Button className='button-styling' style={{backgroundColor: getButtonStyling()}} onClick={saveImage}>
                 Check in
             </Button> : null}
-            {user ? <SignOutButton/> : <SignInButton className = {getSigninButtonStyling()}/>}
+            {user ? <SignOutButton/> : <SignInButton className = 'signin-button-styling' style={{color: getSigninButtonStyling()}}/>}
         </div>
     );
 });

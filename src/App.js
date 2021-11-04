@@ -14,7 +14,7 @@ function App() {
     }
 
     return (
-        <div className={getLayoutStyling()}>
+        <div className='layout' style = {{background: getLayoutStyling()}}>
             <div className='header'>
                 <Tab mode={mode} swapMode={swapMode}/>
             </div>

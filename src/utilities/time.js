@@ -9,7 +9,7 @@ export const isAfternoon = () => {
 }
 
 export const getLayoutStyling = () => {
-    return isMorning() ? 'morning-layout' : isAfternoon() ? 'afternoon-layout' : 'evening-layout';
+    return isMorning() ? 'linear-gradient(180deg, #FFFFFF 0%, #FFE9AF 100%)' : isAfternoon() ? 'linear-gradient(180DEG, #D1E9FF 0%, rgba(255, 202, 123, 0.57) 100%)' : 'linear-gradient(180deg, #333333 0%, #1F305C 100%)';
 }
 
 export const getCalendarLayoutStyling = () => {
@@ -25,19 +25,27 @@ export const getTimeOfDayBorder = () => {
 }
 
 export const getButtonStyling = () => {
-    return isMorning() ? 'morning-button-styling' : isAfternoon() ? 'afternoon-button-styling' : 'evening-button-styling';
+    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#96B3FF';
 }
 
 export const getClearButtonStyling = () => {
-    return isMorning() ? 'morning-clear-button-styling' : isAfternoon() ? 'afternoon-clear-button-styling' : 'evening-clear-button-styling';
+    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#96B3FF';
 }
 
 export const getSigninButtonStyling = () => {
-    return isMorning() ? 'morning-signin-button-styling' : isAfternoon() ? 'afternoon-signin-button-styling' : 'evening-signin-button-styling';
+    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#69C1F2';
+}
+
+export const getDateStyling = () => {
+    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#96B3FF'; 
 }
 
 export const getPromptStyling = () => {
     return isMorning() ? 'prompt-styling' : isAfternoon() ? 'prompt-styling' : 'evening-prompt-styling'; 
+}
+
+export const getPromptGreeting = () => {
+    return isMorning() ? 'Good morning!' : isAfternoon() ? 'Good afternoon!' : 'Good evening!'; 
 }
 
 export const getTabStyling = () => {
