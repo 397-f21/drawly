@@ -5,9 +5,9 @@ import Button from 'react-bootstrap/Button'
 import { writeData } from '../utilities/firebase';
 import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
 import { useSnackbar } from 'notistack';
-import { getButtonStyling, getClearButtonStyling, getSigninButtonStyling, getPromptStyling, getDateStyling, getPromptGreeting } from '../utilities/time.js';
+import { getButtonStyling, getSigninButtonStyling, getPromptStyling, getDateStyling, getPromptGreeting } from '../utilities/time.js';
 import '../Canvas.svg';
-import ColorTool from './ColorTool';
+import { Undo, ClearButton, ColorTool } from './CanvasTools';
 
 const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -26,22 +26,6 @@ const SignOutButton = () => (
         Sign Out
     </Button>
 );
-
-
-const ClearButton = React.forwardRef((props, ref) => (
-    <Button
-        data-testid='clear-button' onClick={() => ref.current.clearCanvas()} className='clear-button-styling' style={{ background: getClearButtonStyling() }}>
-        Clear Canvas
-    </Button>
-));
-
-const UnDo = React.forwardRef((props, ref) => (
-    <div onClick={() => ref.current.undo()} className="tool-circle">
-        <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M18.2292 11.6667C14.3646 11.6667 10.8646 13.1104 8.16666 15.4583L2.91666 10.2083V23.3333H16.0417L10.7625 18.0542C12.7896 16.3625 15.3708 15.3125 18.2292 15.3125C23.3917 15.3125 27.7812 18.6812 29.3125 23.3333L32.7687 22.1958C30.7417 16.0854 25.0104 11.6667 18.2292 11.6667Z" fill="white" />
-        </svg>
-    </div>
-));
 
 const Canvas = React.forwardRef((props, ref) => {
     const canvas = ref ?? React.createRef();
@@ -104,7 +88,7 @@ const Canvas = React.forwardRef((props, ref) => {
                 <ColorTool coloringType='stroke' color={strokeColor} setColor={setStrokeColor} setBackgroundImage={setBackgroundImage} />
                 <ColorTool coloringType='canvas' color={canvasColor} setColor={setCanvasColor} setBackgroundImage={setBackgroundImage} />
                 <div>
-                    <UnDo ref={canvas} />
+                    <Undo ref={canvas} />
                 </div>
             </div>
 
