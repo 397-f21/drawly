@@ -54,30 +54,29 @@ describe("Canvas renders", () => {
 describe("Color picking inputs affect canvas", () => {
   it("Tests if changing canvas color input changes canvas background color", async () => {
     const ref = React.createRef();
-    const { getByTestId } = render(<Canvas ref={ref}/>);
+    const { getByTestId } = render(<Canvas ref={ref} />);
     const colorInput = getByTestId('canvas-color-input');
     const testColor = '#74389c'
-    await fireEvent.change(colorInput, {target: {value: testColor}});
+    await fireEvent.change(colorInput, { target: { value: testColor } });
     expect(colorInput.value).toBe(testColor);
     expect(ref.current.props.canvasColor).toBe(testColor);
   });
 
   it("Tests if changing stroke color input changes stroke color", async () => {
     const ref = React.createRef();
-    const { getByTestId } = render(<Canvas ref={ref}/>);
+    const { getByTestId } = render(<Canvas ref={ref} />);
     const colorInput = getByTestId('stroke-color-input');
     const testColor = '#74389c'
-    await fireEvent.change(colorInput, {target: {value: testColor}});
+    await fireEvent.change(colorInput, { target: { value: testColor } });
     expect(colorInput.value).toBe(testColor);
     expect(ref.current.props.strokeColor).toBe(testColor);
   });
+});
 
-  describe("notification renders after user submit", () => {
-    it("Tests if notification renders", () => {
-      const { getByTestId } = <Canvas />;
-      const canvasRenders = getByTestId('notification-div');
-      expect(canvasRenders).toBeTruthy();
-    });
+describe("notification renders after user submit", () => {
+  it("Tests if notification renders", () => {
+    const { getByTestId } = render(<Canvas />);
+    const canvasRenders = getByTestId('notification-div');
+    expect(canvasRenders).toBeTruthy();
   });
-  
 });

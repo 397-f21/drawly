@@ -7,6 +7,7 @@ import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.j
 import { useSnackbar } from 'notistack';
 import { getButtonStyling, getClearButtonStyling, getSigninButtonStyling, getPromptStyling, getDateStyling, getPromptGreeting } from '../utilities/time.js';
 import '../Canvas.svg';
+import ColorTool from './ColorTool';
 
 const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -100,44 +101,8 @@ const Canvas = React.forwardRef((props, ref) => {
                 />
             </div>
             <div className='tools-grid'>
-                <div className='tool-circle-wrap'>
-                    <div className='tool-circle'
-                        style={{ backgroundColor: strokeColor }}>
-                        <svg width="26" height="28" viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M19.0125 9.17505L14.325 4.48755L3 15.8125V20.5H7.6875L19.0125 9.17505ZM5.5 18V16.85L14.325 8.02505L15.475 9.17505L6.65 18H5.5Z" fill="white" />
-                            <path d="M22.6375 5.55C23.125 5.0625 23.125 4.275 22.6375 3.7875L19.7125 0.8625C19.4625 0.6125 19.15 0.5 18.825 0.5C18.5125 0.5 18.1875 0.625 17.95 0.8625L15.6625 3.15L20.35 7.8375L22.6375 5.55Z" fill="white" />
-                            <path d="M25.5 23H0.5V28H25.5V23Z" fill="white" />
-                        </svg>
-                        <input
-                            type="color"
-                            className='tool-circle'
-                            style={{ opacity: 0 }}
-                            data-testid='stroke-color-input'
-                            value={strokeColor}
-                            onChange={(e) => {
-                                setStrokeColor(e.target.value);
-                            }}></input>
-                    </div>
-                </div>
-                <div className='tool-circle-wrap'>
-                    <div className='tool-circle'
-                        style={{ backgroundColor: canvasColor }}>
-                        <svg width="26" height="30" viewBox="0 0 26 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18.7 11.175L7.525 0L5.7625 1.7625L8.7375 4.7375L2.3 11.175C1.5625 11.9125 1.5625 13.1 2.3 13.825L9.175 20.7C9.5375 21.0625 10.025 21.25 10.5 21.25C10.975 21.25 11.4625 21.0625 11.825 20.7L18.7 13.825C19.4375 13.1 19.4375 11.9125 18.7 11.175ZM4.5125 12.5L10.5 6.5125L16.4875 12.5H4.5125ZM21.75 14.375C21.75 14.375 19.25 17.0875 19.25 18.75C19.25 20.125 20.375 21.25 21.75 21.25C23.125 21.25 24.25 20.125 24.25 18.75C24.25 17.0875 21.75 14.375 21.75 14.375ZM0.5 25H25.5V30H0.5V25Z" fill="white" />
-                        </svg>
-                        <input
-                            type="color"
-                            className="tool-circle"
-                            style={{ opacity: 0 }}
-                            data-testid='canvas-color-input'
-                            value={canvasColor}
-                            onChange={(e) => {
-                                setCanvasColor(e.target.value);
-                                setBackgroundImage('');
-                            }}>
-                        </input>
-                    </div>
-                </div>
+                <ColorTool coloringType='stroke' color={strokeColor} setColor={setStrokeColor} setBackgroundImage={setBackgroundImage} />
+                <ColorTool coloringType='canvas' color={canvasColor} setColor={setCanvasColor} setBackgroundImage={setBackgroundImage} />
                 <div>
                     <UnDo ref={canvas} />
                 </div>
