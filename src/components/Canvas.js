@@ -48,7 +48,7 @@ const Canvas = React.forwardRef((props, ref) => {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const [strokeColor, setStrokeColor] = useState('#000000');
     const [canvasColor, setCanvasColor] = useState('#FFFFFF');
-    const [backgroundImage, setBackgroundImage] = useState('https://cs397-drawly.firebaseapp.com/drawface.jpg');
+    const [backgroundImage, setBackgroundImage] = useState('https://cs397-drawly.firebaseapp.com/Canvas_background.jpg');
 
     const getDate = () => {
         const today = new Date();
