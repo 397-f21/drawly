@@ -2,30 +2,16 @@ import * as React from "react";
 import { useState } from 'react';
 import { ReactSketchCanvas } from "react-sketch-canvas";
 import Button from 'react-bootstrap/Button'
-import { writeData } from '../utilities/firebase';
-import { signInWithGoogle, signOut, useUserState } from '../utilities/firebase.js';
+import { writeData, useUserState } from '../utilities/firebase';
 import { useSnackbar } from 'notistack';
 import { getButtonStyling, getSigninButtonStyling, getPromptStyling, getDateStyling, getPromptGreeting } from '../utilities/time.js';
 import '../Canvas.svg';
 import { Undo, ClearButton, ColorTool } from './CanvasTools';
+import { SignInButton, SignOutButton } from '../utilities/auth';
 
 const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
 const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-const SignInButton = () => (
-    <Button
-        onClick={() => signInWithGoogle()} className='signin-button-styling' style={{ color: getSigninButtonStyling() }}>
-        Sign In
-    </Button>
-);
-
-const SignOutButton = () => (
-    <Button
-        onClick={() => signOut()} className='signin-button-styling' style={{ color: getSigninButtonStyling() }}>
-        Sign Out
-    </Button>
-);
 
 const Canvas = React.forwardRef((props, ref) => {
     const canvas = ref ?? React.createRef();
