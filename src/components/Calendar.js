@@ -57,7 +57,7 @@ const Calendar = () => {
 
     return (
         // See definition of "Div" above for explanation
-        <Div className='calendar-layout' data-testid="cal"> 
+        <Div className='calendar-layout' data-testid="cal" data-cy="cal"> 
             <h2>{MONTH_MAP[today.getMonth()] + ' ' + today.getFullYear()}</h2>
             <div className='calendar-grid'>
                 <h1 style={{ gridArea: 'dd0', color: getDayOfWeekColor()}}>SU</h1>

@@ -5,7 +5,7 @@ const today = new Date();
 const Tab = ({mode, swapMode}) => {
     return(
         <div className={getTabStyling(today)}>
-            <div data-testid="draw-tab" onClick={() => swapMode()} className={mode === 'draw' ? getActivatedTabStyling() : getDeactivatedTabStyling()}>
+            <div data-testid="draw-tab" data-cy="draw-tab" onClick={() => swapMode()} className={mode === 'draw' ? getActivatedTabStyling() : getDeactivatedTabStyling()}>
                 <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M17.375 11.75C18.4105 11.75 19.25 10.9105 19.25 9.875C19.25 8.83947 18.4105 8 17.375 8C16.3395 8 15.5 8.83947 15.5 9.875C15.5 10.9105 16.3395 11.75 17.375 11.75Z" fill={mode === 'draw' ? 'white' : getTabFill()}/>
                     <path d="M8.625 11.75C9.66053 11.75 10.5 10.9105 10.5 9.875C10.5 8.83947 9.66053 8 8.625 8C7.58947 8 6.75 8.83947 6.75 9.875C6.75 10.9105 7.58947 11.75 8.625 11.75Z" fill={mode === 'draw' ? 'white' : getTabFill()}/>

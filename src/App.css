@@ -30,6 +30,7 @@
     background: #FFFFFF;
     border: 4px solid #FDE9D7;
     border-radius: 20px;
+    z-index: 3;
 }
 .morning-tab .morning-tab-activated{
     height: 100%;
@@ -56,6 +57,7 @@
     background: #FFFFFF;
     border: 4px solid #D7EBFD;
     border-radius: 20px;
+    z-index: 3;
 }
 .afternoon-tab .afternoon-tab-activated{
     height: 100%;
@@ -82,6 +84,7 @@
     background: #FFFFFF;
     border: 4px solid #797D89;
     border-radius: 20px;
+    z-index: 3;
 }
 .evening-tab .evening-tab-activated{
     height: 100%;
@@ -310,7 +313,6 @@
     text-align: center;
     color: #FDB573;
 }
-
 .modal-styling{
     width: 338px;
     height: 480px;
