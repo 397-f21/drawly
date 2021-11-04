@@ -68,7 +68,7 @@ const Calendar = () => {
                 <h1 style={{ gridArea: 'dd5', color: getDayOfWeekColor()}}>FR</h1>
                 <h1 style={{ gridArea: 'dd6', color: getDayOfWeekColor()}}>SA</h1>
                 {generateCalendar()}
-                {loading ? <p>Images Loading</p> : formattedImages()}
+                {loading ? <p>Images Loading</p> : error ? <p>Error loading images</p> : formattedImages()}
             </div>
         </Div>
     )
