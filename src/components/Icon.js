@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState } from 'react';
 import Image from 'react-bootstrap/Image'
 import ReactModal from 'react-modal';
+import { getModalDateColor } from "../utilities/time";
 
 const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -45,7 +46,7 @@ const Icon = ({ date_string, svg, loc }) => {
                         </svg>
                 </div>
                 <div className="modal-text">Your drawing on</div>
-                <div className="modal-text-date">{getDate(date_string)}</div>
+                <div className="modal-text-date" style = {{color: getModalDateColor()}}>{getDate(date_string)}</div>
                 <Image key={date_string} className='modal-face' onClick={openModal} src={svg} roundedCircle />
             </ReactModal>
         </div>

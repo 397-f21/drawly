@@ -1,5 +1,12 @@
 export const today = new Date();
 
+const morningColor = '#FDB573';
+const afternoonColor = '#69C1F2';
+const eveningColor = '#B0C6FF';
+const otherEveningColor = '#96B3FF';
+const lightEntryBorder = '#595959';
+const darkEntryBorder = '#FFFFFF';
+
 export const isMorning = () => {
     return today.getHours() > 0 && today.getHours() <= 12;
 }
@@ -13,11 +20,11 @@ export const getLayoutStyling = () => {
 }
 
 export const getCalendarLayoutStyling = () => {
-    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#B0C6FF';
+    return isMorning() ? morningColor : isAfternoon() ? afternoonColor : eveningColor;
 }
 
 export const getDayOfWeekColor = () => {
-    return isMorning() ? '#595959' : isAfternoon() ? '#595959' : '#FFFFFF';
+    return isMorning() ? lightEntryBorder : isAfternoon() ? lightEntryBorder : darkEntryBorder;
 }
 
 export const getTimeOfDayBorder = () => {
@@ -25,19 +32,19 @@ export const getTimeOfDayBorder = () => {
 }
 
 export const getButtonStyling = () => {
-    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#96B3FF';
+    return isMorning() ? morningColor : isAfternoon() ? afternoonColor : otherEveningColor;
 }
 
 export const getClearButtonStyling = () => {
-    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#96B3FF';
+    return isMorning() ? morningColor : isAfternoon() ? afternoonColor : otherEveningColor;
 }
 
 export const getSigninButtonStyling = () => {
-    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#69C1F2';
+    return isMorning() ? morningColor : isAfternoon() ? afternoonColor : afternoonColor;
 }
 
 export const getDateStyling = () => {
-    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#96B3FF'; 
+    return isMorning() ? morningColor : isAfternoon() ? afternoonColor : otherEveningColor; 
 }
 
 export const getPromptStyling = () => {
@@ -57,9 +64,13 @@ export const getActivatedTabStyling = () => {
 }
 
 export const getTabFill = () => {
-    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#96B3FF';
+    return isMorning() ? morningColor : isAfternoon() ? afternoonColor : otherEveningColor;
 }
 
 export const getDeactivatedTabStyling = () => {
     return isMorning() ? 'morning-tab-deactivated' : isAfternoon() ? 'afternoon-tab-deactivated' : 'evening-tab-deactivated';
+}
+
+export const getModalDateColor = () => {
+    return isMorning() ? morningColor : isAfternoon() ? afternoonColor : otherEveningColor;
 }
