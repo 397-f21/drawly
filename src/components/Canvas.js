@@ -85,7 +85,7 @@ const Canvas = React.forwardRef((props, ref) => {
             <div className='date-wrapper'>
                 <h1 className='date-styling' style={{ color: getDateStyling() }}>{getDate()}</h1>
                 <h2 className={getPromptStyling()}>{getPromptGreeting()}</h2>
-                <h2 className={getPromptStyling()}>Draw how you feel today:</h2>
+                <h2 className={getPromptStyling()}>How do you feel today?</h2>
             </div>
             <div data-testid='canvas-div'>
                 <ReactSketchCanvas
