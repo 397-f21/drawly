@@ -13,7 +13,7 @@ export const getLayoutStyling = () => {
 }
 
 export const getCalendarLayoutStyling = () => {
-    return isMorning() ? 'morning-calendar-layout' : isAfternoon() ? 'afternoon-calendar-layout' : 'evening-calendar-layout';
+    return isMorning() ? '#FDB573' : isAfternoon() ? '#69C1F2' : '#B0C6FF';
 }
 
 export const getDayOfWeekColor = () => {

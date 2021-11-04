@@ -2,6 +2,7 @@ import * as React from "react";
 import { useData, useUserState } from '../utilities/firebase.js';
 import Icon from './Icon'
 import {today, getCalendarLayoutStyling, getDayOfWeekColor, getTimeOfDayBorder} from '../utilities/time.js';
+import styled from 'styled-components';
 
 const MONTH_MAP = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
@@ -14,6 +15,8 @@ const DATE_TO_GRID = [
     'a05', 'a15', 'a25', 'a35', 'a45', 'a55', 'a65'
 ]
 
+const Div = styled.div`h2 {color: ${getCalendarLayoutStyling()}}`; // a custom "styled-component" div with programmatic h2 coloring
+
 const Calendar = () => {
     const [user] = useUserState();
     const [images, loading, error] = useData(user ? user.uid : "no_user");
@@ -24,7 +27,6 @@ const Calendar = () => {
         const firstOfMonthDay = new Date(year, month, 1).getDay();
         const lastOfMonthDay = new Date(year, month + 1, 0).getDate();
         const mapRange = Array.from({length: lastOfMonthDay}, (_, i) => DATE_TO_GRID[firstOfMonthDay + i]);
-        // console.log(mapRange)
         return (
             mapRange.map(thisGridArea => {
                 return (
@@ -54,7 +56,8 @@ const Calendar = () => {
     }
 
     return (
-        <div className={getCalendarLayoutStyling()} data-testid="cal">
+        // See definition of "Div" above for explanation
+        <Div className='calendar-layout' data-testid="cal"> 
             <h2>{MONTH_MAP[today.getMonth()] + ' ' + today.getFullYear()}</h2>
             <div className='calendar-grid'>
                 <h1 style={{ gridArea: 'dd0', color: getDayOfWeekColor()}}>SU</h1>
@@ -67,7 +70,7 @@ const Calendar = () => {
                 {generateCalendar()}
                 {loading ? <p>Images Loading</p> : formattedImages()}
             </div>
-        </div>
+        </Div>
     )
 }
 export default Calendar;

@@ -222,30 +222,6 @@
     justify-content: center;
     flex-direction: column;
 }
-.morning-calendar-layout{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.afternoon-calendar-layout{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-.evening-calendar-layout{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
 .calendar-grid{
     aspect-ratio: 1/1;
     width: 90%;
@@ -307,50 +283,6 @@
     justify-self: center;
     max-width: 500px; 
 }
-
-.morning-calendar-layout h2{
-    padding-left: 28px;
-    width: 90%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    color: #FDB573;
-    text-align: left;
-    align-self: center;
-    justify-self: center;
-    max-width: 500px;
-}
-
-.afternoon-calendar-layout h2{
-    padding-left: 28px;
-    width: 90%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    color: #69C1F2;
-    text-align: left;
-    align-self: center;
-    justify-self: center;
-    max-width: 500px;
-}
-
-.evening-calendar-layout h2{
-    padding-left: 28px;
-    width: 90%;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 24px;
-    color: #B0C6FF;
-    text-align: left;
-    align-self: center;
-    justify-self: center;
-    max-width: 500px;
-}
-
-
 .modal-text{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-style: normal;
