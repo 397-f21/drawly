@@ -81,7 +81,7 @@ const Canvas = React.forwardRef((props, ref) => {
             });
     }
     return (
-        <div className='canvas-layout'>
+        <div data-cy='canvas-layout' className='canvas-layout'>
             <div className='date-wrapper'>
                 <h1 className='date-styling' style={{ color: getDateStyling() }}>{getDate()}</h1>
                 <h2 className={getPromptStyling()}>{getPromptGreeting()}</h2>
