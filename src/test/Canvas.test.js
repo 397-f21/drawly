@@ -80,3 +80,43 @@ describe("notification renders after user submit", () => {
     expect(canvasRenders).toBeTruthy();
   });
 });
+
+describe("Undo button", () => {
+  it("Tests if undo button renders", () => {
+    const { getByTestId } = render(<Canvas />);
+    const undoButton = getByTestId('undo-button');
+    expect(undoButton).toBeTruthy();
+  });
+
+  it("Tests if clicking undo button undoes strokes", async () => {
+    const ref = React.createRef();
+    const { getByTestId } = render(<Canvas ref={ref} />);
+    expect(ref.current.state.currentPaths.length).toBe(0);
+
+    const pathsToLoad = `[
+            {"drawMode": true,
+              "strokeColor": "#000000",
+              "strokeWidth": 4,
+              "paths": [{"x": 100, "y": 100}],
+              "startTimestamp": 0,
+              "endTimestamp": 0
+            }]`;
+    let pathsToUpdate = JSON.parse(pathsToLoad);
+    ref.current?.loadPaths(pathsToUpdate);
+    expect(ref.current.state.currentPaths.length).toBe(1);
+    const pathsToLoad2 = `[
+            {"drawMode": true,
+              "strokeColor": "#000000",
+              "strokeWidth": 5,
+              "paths": [{"x": 120, "y": 110}],
+              "startTimestamp": 0,
+              "endTimestamp": 0
+            }]`;
+    pathsToUpdate = JSON.parse(pathsToLoad2);
+    ref.current?.loadPaths(pathsToUpdate);
+    expect(ref.current.state.currentPaths.length).toBe(2);
+    const undoButton = getByTestId('undo-button');
+    await fireEvent.click(undoButton);
+    expect(ref.current.state.currentPaths.length).toBe(1);
+  });
+});
