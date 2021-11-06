@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button'
+import {getButtonStyling} from '../utilities/time.js';
 
 const CalendarNav = ({year, setYear, month, setMonth}) => {
 
@@ -18,8 +19,8 @@ const CalendarNav = ({year, setYear, month, setMonth}) => {
 
     return (
         <div>
-            <Button onClick={prevMonth}>Prev</Button>
-            <Button onClick={nextMonth}>Next</Button>
+            <Button className='button-styling' style={{ backgroundColor: getButtonStyling() }} onClick={prevMonth}>Prev</Button>
+            <Button className='button-styling' style={{ backgroundColor: getButtonStyling() }} onClick={nextMonth}>Next</Button>
         </div>
     )
 }
