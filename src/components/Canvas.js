@@ -19,7 +19,7 @@ const Canvas = React.forwardRef((props, ref) => {
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     const [strokeColor, setStrokeColor] = useState('#000000');
     const [canvasColor, setCanvasColor] = useState('#FFFFFF');
-    const [backgroundImage, setBackgroundImage] = useState('https://cs397-drawly.firebaseapp.com/Canvas_background.png');
+    // const [backgroundImage, setBackgroundImage] = useState('https://cs397-drawly.firebaseapp.com/Canvas_background.png');
 
     const getDate = () => {
         const today = new Date();
@@ -66,13 +66,13 @@ const Canvas = React.forwardRef((props, ref) => {
                     canvasColor={canvasColor}
                     height={300} // make dynamic
                     width={300} // make dynamic
-                    backgroundImage={backgroundImage}
-                    onUpdate={() => setBackgroundImage('')}
+                    // backgroundImage={backgroundImage}
+                    // onUpdate={() => setBackgroundImage('')}
                 />
             </div>
             <div className='tools-grid'>
-                <ColorTool coloringType='stroke' color={strokeColor} setColor={setStrokeColor} setBackgroundImage={setBackgroundImage} />
-                <ColorTool coloringType='canvas' color={canvasColor} setColor={setCanvasColor} setBackgroundImage={setBackgroundImage} />
+                <ColorTool coloringType='stroke' color={strokeColor} setColor={setStrokeColor} />
+                <ColorTool coloringType='canvas' color={canvasColor} setColor={setCanvasColor} />
                 <div>
                     <Undo ref={canvas} />
                 </div>

@@ -18,9 +18,11 @@ const CalendarNav = ({year, setYear, month, setMonth}) => {
     }
 
     return (
-        <div>
-            <Button className='button-styling' style={{ backgroundColor: getButtonStyling() }} onClick={prevMonth}>Prev</Button>
-            <Button className='button-styling' style={{ backgroundColor: getButtonStyling() }} onClick={nextMonth}>Next</Button>
+        <div className='date-control'>
+            {/* <Button className='button-styling' style={{ backgroundColor: getButtonStyling() }} onClick={prevMonth}>Prev</Button>
+            <Button className='button-styling' style={{ backgroundColor: getButtonStyling() }} onClick={nextMonth}>Next</Button> */}
+            <h1 className='prev' style={{color: getButtonStyling()}} onClick={prevMonth}> &#60; </h1>
+            <h1 className='next' style={{color: getButtonStyling()}} onClick={nextMonth}> &#62; </h1>
         </div>
     )
 }

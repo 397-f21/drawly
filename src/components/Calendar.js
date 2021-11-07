@@ -58,7 +58,10 @@ const Calendar = () => {
     return (
         // See definition of "Div" above for explanation
         <Div className='calendar-layout' data-testid="cal" data-cy="cal">
-            <h2>{MONTH_MAP[month] + ' ' + year}</h2>
+            <div className='date-utils'>
+                <h2>{MONTH_MAP[month] + ' ' + year}</h2>
+                <CalendarNav year={year} setYear={setYear} month={month} setMonth={setMonth} />
+            </div>
             <div className='calendar-grid'>
                 <h1 style={{ gridArea: 'dd0', color: getDayOfWeekColor() }}>SU</h1>
                 <h1 style={{ gridArea: 'dd1', color: getDayOfWeekColor() }}>MO</h1>
@@ -70,7 +73,7 @@ const Calendar = () => {
                 {generateCalendar()}
                 {loading ? <p>Images Loading</p> : error ? <p>Error loading images</p> : formattedImages()}
             </div>
-            <CalendarNav year={year} setYear={setYear} month={month} setMonth={setMonth} />
+            {/* <CalendarNav year={year} setYear={setYear} month={month} setMonth={setMonth} /> */}
         </Div>
     )
 }
