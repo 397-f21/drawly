@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Image from 'react-bootstrap/Image'
 import ReactModal from 'react-modal';
 import { getModalDateColor } from "../utilities/time";
+import { getTimeOfDayBorder } from '../utilities/time.js';
 
 const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
@@ -38,7 +39,7 @@ const Icon = ({ date_string, svg, loc }) => {
 
     return (
         <div className='calendar-entry-wrapper' style={{ gridArea: loc }}>
-            <Image key={date_string} className='calendar-entry' onClick={openModal} src={svg} roundedCircle />
+            <Image key={date_string} className='calendar-entry' onClick={openModal} src={svg} roundedCircle style={{border: getTimeOfDayBorder()}}/>
             <ReactModal isOpen={modalVisible} onRequestClose={closeModal} className="modal-styling" style={customStyles}>
                 <div onClick={closeModal}>
                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
