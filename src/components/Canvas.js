@@ -13,6 +13,12 @@ const DAY_MAP = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday
 
 const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
+// const styles = {
+//     border: '1px solid black',
+//     borderRadius: '50%',
+//     zIndex: '1'
+// }
+
 const Canvas = React.forwardRef((props, ref) => {
     const canvas = ref ?? React.createRef();
     const [user] = useUserState();
@@ -60,6 +66,8 @@ const Canvas = React.forwardRef((props, ref) => {
             </div>
             <div data-testid='canvas-div'>
                 <ReactSketchCanvas
+                    style={{borderRadius: '50%'}}
+                    className='canvas'
                     ref={canvas}
                     strokeWidth={5}
                     strokeColor={strokeColor}
