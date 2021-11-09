@@ -70,7 +70,7 @@ export const ColorTool = ({ coloringType, color, setColor, setBackgroundImage })
                     value={color}
                     onChange={(e) => {
                         setColor(e.target.value);
-                        setBackgroundImage('');
+                        // setBackgroundImage('');
                     }}></input>
             </div>
         </div >

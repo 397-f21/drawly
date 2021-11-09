@@ -373,4 +373,7 @@
 .next:hover{
     cursor: pointer;
 }
+.canvas svg{
+    border-radius: 50%;
+}
 
