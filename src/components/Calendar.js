@@ -50,7 +50,8 @@ const Calendar = () => {
         return (Object.keys(images ?? {}).map(key => {
             const imageDateIndex = new Date(key).getDate() - 1;
             const imageDateMonth = new Date(key).getMonth();
-            return (imageDateMonth === month) ? <Icon key={key} date_string={key} svg={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} loc={mapRange[imageDateIndex]} /> : null;
+            const imageDateYear = new Date(key).getFullYear();
+            return (imageDateMonth === month && imageDateYear === year) ? <Icon key={key} date_string={key} svg={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} loc={mapRange[imageDateIndex]} /> : null;
         }
         ));
     }
