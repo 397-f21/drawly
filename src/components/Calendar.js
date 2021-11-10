@@ -19,7 +19,7 @@ const DATE_TO_GRID = [
 
 const Div = styled.div`h2 {color: ${getCalendarLayoutStyling()}}`; // a custom "styled-component" div with programmatic h2 coloring
 
-const Calendar = () => {
+const Calendar = ({testing}) => {
     const [user] = useUserState();
     const [images, loading, error] = useData(user ? user.uid : "no_user");
     const [year, setYear] = useState(today.getFullYear());
@@ -51,7 +51,7 @@ const Calendar = () => {
             const imageDateIndex = new Date(key).getDate() - 1;
             const imageDateMonth = new Date(key).getMonth();
             const imageDateYear = new Date(key).getFullYear();
-            return (imageDateMonth === month && imageDateYear === year) ? <Icon key={key} date_string={key} svg={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} loc={mapRange[imageDateIndex]} /> : null;
+            return (imageDateMonth === month && imageDateYear === year) ? <Icon key={key} date_string={key} svg={`data:image/svg+xml;utf8,${encodeURIComponent(images[key])}`} loc={mapRange[imageDateIndex]} testing={testing}/> : null;
         }
         ));
     }
