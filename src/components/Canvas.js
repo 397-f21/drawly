@@ -22,7 +22,7 @@ const MONTH_MAP = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'
 const Canvas = React.forwardRef((props, ref) => {
     const canvas = ref ?? React.createRef();
     const [user] = useUserState();
-    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+    const { enqueueSnackbar } = useSnackbar();
     const [strokeColor, setStrokeColor] = useState('#000000');
     const [canvasColor, setCanvasColor] = useState('#FFFFFF');
     // const [backgroundImage, setBackgroundImage] = useState('https://cs397-drawly.firebaseapp.com/Canvas_background.png');

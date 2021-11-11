@@ -1,4 +1,4 @@
-import {render, fireEvent, screen, waitFor} from "@testing-library/react";
+import {render, screen, waitFor} from "@testing-library/react";
 import Calendar from '../components/Calendar';
 // import { useData, useUserState } from '../utilities/firebase.js';
 import * as Functions from '../utilities/firebase'

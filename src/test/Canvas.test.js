@@ -120,3 +120,11 @@ describe("Undo button", () => {
     expect(ref.current.state.currentPaths.length).toBe(1);
   });
 });
+
+describe("Check in button", () => {
+  it("Renders Check in button only when user is logged in", () => {
+      const { getByTestId } = render(<Canvas />);
+      const user = getByTestId("user");
+      expect(user).toBeTruthy;
+  });
+});
