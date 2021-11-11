@@ -19,7 +19,7 @@ function App() {
                 <Tab mode={mode} swapMode={swapMode}/>
             </div>
             <div className='content'>
-                {mode === 'draw' ? <Canvas /> : <Calendar user='dummy_user'/>}
+                {mode === 'draw' ? <Canvas /> : <Calendar testing={false} />}
             </div>
         </div>
     );

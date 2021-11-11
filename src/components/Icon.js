@@ -16,10 +16,12 @@ const customStyles = {
     }
 }
 
-const Icon = ({ date_string, svg, loc }) => {
+const Icon = ({ date_string, svg, loc, testing }) => {
     const [modalVisible, setModalVisible] = useState(false);
 
-    ReactModal.setAppElement('#root');
+    const setModalBase = () => testing?'body':'#root'
+
+    ReactModal.setAppElement(setModalBase());
 
     const openModal = () => {
         setModalVisible(true);
@@ -38,7 +40,7 @@ const Icon = ({ date_string, svg, loc }) => {
     }
 
     return (
-        <div className='calendar-entry-wrapper' style={{ gridArea: loc }}>
+        <div className='calendar-entry-wrapper' style={{ gridArea: loc }} data-testid="icon">
             <Image key={date_string} className='calendar-entry' onClick={openModal} src={svg} roundedCircle style={{border: getTimeOfDayBorder()}}/>
             <ReactModal isOpen={modalVisible} onRequestClose={closeModal} className="modal-styling" style={customStyles}>
                 <div onClick={closeModal}>
