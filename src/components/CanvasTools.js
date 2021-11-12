@@ -10,7 +10,7 @@ export const ClearButton = React.forwardRef((props, ref) => (
 ));
 
 export const Undo = React.forwardRef((props, ref) => (
-    <div onClick={() => ref.current.undo()} className="tool-circle" data-testod='undo-button'>
+    <div onClick={() => ref.current.undo()} className="tool-circle" data-testid='undo-button'>
         <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M18.2292 11.6667C14.3646 11.6667 10.8646 13.1104 8.16666 15.4583L2.91666 10.2083V23.3333H16.0417L10.7625 18.0542C12.7896 16.3625 15.3708 15.3125 18.2292 15.3125C23.3917 15.3125 27.7812 18.6812 29.3125 23.3333L32.7687 22.1958C30.7417 16.0854 25.0104 11.6667 18.2292 11.6667Z" fill="white" />
         </svg>
